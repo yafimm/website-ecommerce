@@ -37,27 +37,45 @@
                       @csrf
                       @method('post')
                     	<div class="col-md-12 form-group">
-												<input class="form-control" type="text" name="username" placeholder="Username" value="">
-											</div>
+												<input class="form-control" type="text" name="username" placeholder="Username" value="{{ old('username') }}">
+                        @if($errors->has('username'))
+                          <small class="form-text text-danger">*{{ $errors->first('username') }}</small>
+                        @endif
+                      </div>
                       <div class="col-md-12 form-group">
-												<input class="form-control" type="text" name="nama" placeholder="Full name" value="">
-											</div>
+												<input class="form-control" type="text" name="name" placeholder="Full name" value="{{ old('nama') }}">
+                        @if($errors->has('name'))
+                          <small class="form-text text-danger">*{{ $errors->first('name') }}</small>
+                        @endif
+                    	</div>
 											<div class="col-md-12 form-group">
-												<select name="jenis_kelamin" id="select" class="form-control" value="jenis_kelamin">
+												<select name="gender" id="select" class="form-control">
 													<option value="" disabled>Gender</option>
 													<option value="Pria">Male</option>
 													<option value="Wanita">Female</option>
 												</select>
+                        @if($errors->has('gender'))
+                          <small class="form-text text-danger">*{{ $errors->first('gender') }}</small>
+                        @endif
 											</div>
 											<div class="col-md-12 form-group">
-												<input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
-											</div>
+												<input type="email" class="form-control" id="email" name="email" placeholder="Email Address" value="{{ old('email') }}">
+                        @if($errors->has('email'))
+                          <small class="form-text text-danger">*{{ $errors->first('email') }}</small>
+                        @endif
+                    	</div>
 											<div class="col-md-12 form-group">
 												<input type="password" class="form-control" id="password" name="password" placeholder="Password">
-											</div>
+                        @if($errors->has('password'))
+                          <small class="form-text text-danger">*{{ $errors->first('password') }}</small>
+                        @endif
+                    	</div>
 											<div class="col-md-12 form-group">
-												<input type="password" class="form-control" id="pass" name="confirmation_password" placeholder="Confirm password">
-											</div>
+												<input type="password" class="form-control" id="pass" name="password_confirmation" placeholder="Confirm password">
+                        @if($errors->has('password_confirmation'))
+                          <small class="form-text text-danger">*{{ $errors->first('password_confirmation') }}</small>
+                        @endif
+                    	</div>
 											<div class="col-md-12 form-group">
 												<button type="submit" value="submit" class="btn submit_btn">Register</button>
 											</div>

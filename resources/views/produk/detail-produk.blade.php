@@ -34,16 +34,16 @@
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3>Faded SkyBlu Denim Jeans</h3>
-						<h2>Rp.14.009.99</h2>
+						<h3>{{ $produk->nama }}</h3>
+						<h2>Rp. {{ $produk->harga }}</h2>
 						<ul class="list">
 							<li>
 								<a class="active" href="#">
-									<span>Category</span> : Household</a>
+									<span>Category</span> : {{ $produk->kategori->nama_kategori }}</a>
 							</li>
 							<li>
 								<a href="#">
-									<span>Availibility</span> : In Stock</a>
+									<span>Availibility</span> : {{ $produk->stok }} Stock</a>
 							</li>
 						</ul>
 						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for something that
@@ -146,7 +146,7 @@
 						</table>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</section>

@@ -69,7 +69,7 @@
 									</a>
 								</div>
 							</div>
-							<a href="#">
+							<a href="{{ route('produk.show_produk', $produk->slug ) }}">
 								<h4>{{ $produk->nama }}</h4>
 							</a>
 							<h5>Rp. {{ number_format($produk->harga) }}</h5>

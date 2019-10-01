@@ -39,9 +39,9 @@
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="name" name="username" placeholder="Username" value="{{ old('username') }}">
 								@error('username')
-										<span class="invalid-feedback" role="alert">
-												<strong>{{ $message }}</strong>
-										</span>
+									<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+									</span>
 								@enderror
 							</div>
 							<div class="col-md-12 form-group">

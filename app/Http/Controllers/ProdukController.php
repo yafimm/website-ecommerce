@@ -42,7 +42,7 @@ class ProdukController extends Controller
     public function index_produk()
     {
         $all_produk = Produk::orderBy('stok')->simplePaginate(20);
-        return view('produk.index_produk')
+        return view('produk.index_produk');
     }
 
     public function create()
@@ -79,7 +79,7 @@ class ProdukController extends Controller
     {
         $produk = Produk::where('slug', '=', $slug)->first();
         if($produk){
-            return view('produk.show_produk', compact('produk'));
+            return view('produk.detail-produk', compact('produk'));
         }
         return abort(404);
     }
