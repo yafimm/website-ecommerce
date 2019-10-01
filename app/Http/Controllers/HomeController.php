@@ -18,6 +18,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        $featured_produk = \App\Produk::take(10)->get();
+        return view('home', compact('featured_produk'));
     }
 }
