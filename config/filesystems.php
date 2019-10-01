@@ -55,6 +55,16 @@ return [
             'visibility' => 'public',
         ],
 
+        'gambar1' => [
+            'driver' => 'local',
+            'root' => public_path('images/produk'),
+        ],
+
+        'foto' => [
+            'driver' => 'local',
+            'root' => storage_path('images/profile'),
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
