@@ -66,41 +66,32 @@
 									<li class="nav-item">
 										<a href="#" class="icons">
 											<i class="fa fa-user" aria-hidden="true"></i>
+											{{ Auth::user()->username }}
 										</a>
 									</li>
-
 									<hr>
-
 									<li class="nav-item">
 										<a href="#" class="icons" style="font-size: 13px; font-weight: bold;" href="{{ route('logout') }}"  onclick="event.preventDefault();
 		                               document.getElementById('logout-form').submit();">
 											LOGOUT
 										</a>
-
 		                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 		                    @csrf
 		                </form>
 									</li>
-
 									<hr>
-
 									@else
-
-
 									<li class="nav-item">
 										<a href="{{ route('login') }}" class="icons" style="font-size: 13px; font-weight: bold;">
 											LOGIN
 										</a>
 									</li>
-
 									<hr>
-
 									<li class="nav-item">
 										<a href="{{ route('register') }}" class="icons" style="font-size: 13px; font-weight: bold;">
 											REGISTER
 										</a>
 									</li>
-
 									<hr>
 									@endif
 

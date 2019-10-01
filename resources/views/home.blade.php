@@ -62,9 +62,6 @@
 								<img class="img-fluid" src="{{ asset('images/produk/'. $produk->gambar1) }}" alt="">
 								<div class="p_icon">
 									<a href="#">
-										<i class="lnr lnr-heart"></i>
-									</a>
-									<a href="#">
 										<i class="lnr lnr-cart"></i>
 									</a>
 								</div>
