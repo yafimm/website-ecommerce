@@ -268,6 +268,9 @@ a {
             .header_area .navbar .nav .nav-item.submenu ul .nav-item:hover .nav-link {
               background: #1641ff;
               color: #fff; }
+              .header_area .navbar .nav .nav-item.submenu ul .nav-item .logout {
+              background: #1641ff;
+              color: #fff; }
         @media (min-width: 992px) {
           .header_area .navbar .nav .nav-item.submenu:hover ul {
             visibility: visible;
@@ -4474,4 +4477,8 @@ h6 {
     
     font-weight: normal;
     color: #777777;
+}
+.nama-pengguna{
+  margin-right: 10px;
+  margin-left: 10px;
 }
