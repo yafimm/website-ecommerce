@@ -44,14 +44,12 @@
 									<li class="nav-item">
 										<a class="nav-link" href="contact.html">About Us</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="contact.html">Login</a>
-									</li>
 								</ul>
 							</div>
 
 							<div class="col-lg-5">
 								<ul class="nav navbar-nav navbar-right right_nav pull-right">
+
 
 									<hr>
 
@@ -67,6 +65,30 @@
 									<li class="nav-item">
 										<a href="#" class="icons">
 											<i class="fa fa-user" aria-hidden="true"></i>
+										</a>
+									</li>
+
+									<hr>
+
+									<li class="nav-item">
+										<a href="#" class="icons" style="font-size: 13px; font-weight: bold;">
+											LOGIN
+										</a>
+									</li>
+
+									<hr>
+
+									<li class="nav-item">
+										<a href="#" class="icons" style="font-size: 13px; font-weight: bold;">
+											REGISTER
+										</a>
+									</li>
+
+									<hr>
+
+									<li class="nav-item">
+										<a href="#" class="icons" style="font-size: 13px; font-weight: bold;">
+											LOGOUT
 										</a>
 									</li>
 
