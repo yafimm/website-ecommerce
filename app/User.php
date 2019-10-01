@@ -10,23 +10,37 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = 'users';
+
+    protected $rememberToken = false;
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'nama', 'email' ,'deskripsi', 'foto','password', 'id_role', 'no_telp', 'no_rekening', 'gender', 'username'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function isAdmin(){
+      if($this->id_role === 1){
+           return true;
+       }else{
+           return false;
+       }
+    }
+
+
+    public function transaksi(){
+      return $this->hasMany('App\Transaksi', 'id_user', 'id');
+    }
+
+    public function transaksi_admin(){
+      if($this->isAdmin()){
+        return $this->hasMany('App\Transaksi', 'id_admin', 'id')
+      }
+      return false;
+    }
+
+    public function role(){
+      return $this->belongsTo('App\Role', 'id_role');
+    }
 
     /**
      * The attributes that should be cast to native types.

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTransaksiTable extends Migration
+class CreateProdukTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,24 @@ class CreateTransaksiTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaksi', function (Blueprint $table) {
+        Schema::create('produk', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_user')->unsigned();
-            $table->integer('id_admin')->unsigned();
-            $table->enum('status',['Selesai', 'Belum selesai', 'Sedang dikirim']);
-            $table->string('alamat');
-            $table->integer('total_harga');
+            $table->integer('id_kategori')->unsigned();
+            $table->string('nama');
+            $table->integer('stok');
+            $table->integer('harga');
+            $table->integer('diskon');
+            $table->string('gambar1');
+            $table->string('gambar2');
+            $table->string('gambar3');
+            $table->string('gambar4');
             $table->timestamps();
         });
+
         Schema::table('detail_transaksi', function (Blueprint $table){
-           $table->foreign('id_transaksi')
+           $table->foreign('id_produk')
               ->references('id')
-              ->on('transaksi')
+              ->on('produk')
               ->onDelete('cascade')
               ->onUpdate('cascade');
          });
@@ -39,8 +44,8 @@ class CreateTransaksiTable extends Migration
     public function down()
     {
         Schema::table('detail_transaksi', function(Blueprint $table){
-          $table->dropForeign('detail_transaksi_id_transaksi_foreign');
+          $table->dropForeign('detail_transaksi_id_produk_foreign');
         });
-        Schema::dropIfExists('transaksi');
+        Schema::dropIfExists('produk');
     }
 }

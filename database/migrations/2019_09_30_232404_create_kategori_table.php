@@ -14,8 +14,16 @@ class CreateKategoriTable extends Migration
     public function up()
     {
         Schema::create('kategori', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+            $table->increments('id');
+            $table->string('nama_kategori');
+        });
+
+        Schema::table('produk', function (Blueprint $table) {
+          $table->foreign('id_kategori')
+                ->references('id')
+                ->on('kategori')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 
@@ -26,6 +34,9 @@ class CreateKategoriTable extends Migration
      */
     public function down()
     {
+        Schema::table('produk', function(Blueprint $table){
+          $table->dropForeign('produk_id_kategori_foreign');
+        });
         Schema::dropIfExists('kategori');
     }
 }
