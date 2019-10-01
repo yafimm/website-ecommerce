@@ -14,42 +14,52 @@ class KategoriTableSeeder extends Seeder
     {
         $kategori = new Kategori;
         $kategori->nama_kategori = "Samsung";
+        $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 
         $kategori = new Kategori;
         $kategori->nama_kategori = "Asus";
+        $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 
         $kategori = new Kategori;
         $kategori->nama_kategori = "Lenovo";
+        $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 
         $kategori = new Kategori;
         $kategori->nama_kategori = "Oppo";
+        $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 
         $kategori = new Kategori;
         $kategori->nama_kategori = "Iphone";
+        $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 
         $kategori = new Kategori;
         $kategori->nama_kategori = "Nokia";
+        $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 
         $kategori = new Kategori;
         $kategori->nama_kategori = "Soni";
+        $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 
         $kategori = new Kategori;
         $kategori->nama_kategori = "Vivo";
+        $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 
         $kategori = new Kategori;
         $kategori->nama_kategori = "Nexus";
+        $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 
         $kategori = new Kategori;
-        $kategori->nama_kategori = "Advan"; 
+        $kategori->nama_kategori = "Advan";
+        $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 
     }

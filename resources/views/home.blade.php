@@ -11,7 +11,7 @@
 							<br />Your Smartphones</h3>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
 							aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-						<a class="white_bg_btn" href="#">View Collection</a>
+						<a class="white_bg_btn" href="{{ route('produk.index_produk') }}">View Collection</a>
 					</div>
 				</div>
 			</div>
@@ -78,37 +78,6 @@
 					@endforeach
 				</div>
 
-				<div class="row">
-					<nav class="cat_page mx-auto" aria-label="Page navigation example">
-						<ul class="pagination">
-							<li class="page-item">
-								<a class="page-link" href="#">
-									<i class="fa fa-chevron-left" aria-hidden="true"></i>
-								</a>
-							</li>
-							<li class="page-item active">
-								<a class="page-link" href="#">01</a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="#">02</a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="#">03</a>
-							</li>
-							<li class="page-item blank">
-								<a class="page-link" href="#">...</a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="#">09</a>
-							</li>
-							<li class="page-item">
-								<a class="page-link" href="#">
-									<i class="fa fa-chevron-right" aria-hidden="true"></i>
-								</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
 			</div>
 		</div>
 	</section>

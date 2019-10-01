@@ -9,24 +9,24 @@
 						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
 								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
-									<img src="img/product/single-product/s-product-s-2.jpg" alt="">
+									<img src="{{ asset('img/product/single-product/s-product-s-2.jpg') }}" alt="">
 								</li>
 								<li data-target="#carouselExampleIndicators" data-slide-to="1">
-									<img src="img/product/single-product/s-product-s-3.jpg" alt="">
+									<img src="{{ asset('img/product/single-product/s-product-s-3.jpg') }}" alt="">
 								</li>
 								<li data-target="#carouselExampleIndicators" data-slide-to="2">
-									<img src="img/product/single-product/s-product-s-4.jpg" alt="">
+									<img src="{{ asset('img/product/single-product/s-product-s-4.jpg') }}" alt="">
 								</li>
 							</ol>
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img class="d-block w-100" src="img/product/single-product/s-product-1.jpg" alt="First slide">
+									<img class="d-block w-100" src="{{ asset('images/produk/'. $produk->gambar1) }}" alt="First slide">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100" src="img/product/single-product/s-product-1.jpg" alt="Second slide">
+									<img class="d-block w-100" src="{{ asset('images/produk/'. $produk->gambar1) }}" alt="Second slide">
 								</div>
 								<div class="carousel-item">
-									<img class="d-block w-100" src="img/product/single-product/s-product-1.jpg" alt="Third slide">
+									<img class="d-block w-100" src="{{ asset('images/produk/'. $produk->gambar1) }}" alt="Third slide">
 								</div>
 							</div>
 						</div>

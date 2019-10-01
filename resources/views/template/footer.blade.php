@@ -5,7 +5,8 @@
 				<div class="col-lg-7 col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<h6 class="footer_title">About Us</h6>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.</p>
+						<p>Case-sual adalah sebuah toko yang menyediakan Casing Handphone. Bermula dari sebuah bangunan yang berlokasi di Jalan (isi dengan alamat toko Anda di sini), toko kami akhirnya bisa menjangkau pasar yang lebih luas lagi melalui internet.
+								Seiring dengan semakin berkembangnya teknologi, maka kami mencoba berinovasi dalam berbisnis. Salah satu bentuk inovasinya adalah dengan menyediakan berbagai layanan toko kami melalui media internet, dan toko online ini adalah salah satu bentuk pelayanan kami kepada Anda..</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
@@ -44,7 +45,7 @@
 						<h6 class="footer_title">Follow Us</h6>
 						<p>Let us be social</p>
 						<div class="f_social">
-							<a href="#">
+							<a href="https://facebook.com/yosar.naufaldimuhaimin">
 								<i class="fa fa-facebook"></i>
 							</a>
 							<a href="#">

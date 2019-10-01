@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produk;
+use App\Kategori;
 
 class ProdukController extends Controller
 {
@@ -41,8 +42,21 @@ class ProdukController extends Controller
 
     public function index_produk()
     {
-        $all_produk = Produk::orderBy('stok')->simplePaginate(20);
-        return view('produk.index_produk');
+        $all_produk = Produk::orderBy('stok')->Paginate(20);
+        $all_kategori = Kategori::all();
+        return view('produk.daftar-produk', compact('all_produk', 'all_kategori'));
+    }
+
+    public function produk_kategori($slug)
+    {
+        $kategori = Kategori::where('slug', '=', $slug)->first();
+        if($kategori)
+        {
+            $all_produk = Produk::where('id_kategori', '=', $kategori->id)->Paginate(20);
+            $all_kategori = Kategori::all();
+            return view('produk.daftar-produk', compact('all_produk', 'all_kategori'));
+        }
+        return abort(404);
     }
 
     public function create()
