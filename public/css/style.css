@@ -4464,3 +4464,14 @@ h6 {
   width: 100%;
   margin-bottom: 50px;
 }
+.img-checkout{
+  width: 150px;
+  max-height: 150px;
+}
+.placeholder-textarea::placeholder{
+  line-height: 24px;
+    font-size: 14px;
+    
+    font-weight: normal;
+    color: #777777;
+}
