@@ -43,7 +43,7 @@ class ProdukController extends Controller
     public function index_produk()
     {
         $all_produk = Produk::orderBy('stok')->Paginate(20);
-        $all_kategori = Kategori::all();
+        $all_kategori = Kategori::orderBy('nama_kategori','asc')->get();
         return view('produk.daftar-produk', compact('all_produk', 'all_kategori'));
     }
 
@@ -53,7 +53,7 @@ class ProdukController extends Controller
         if($kategori)
         {
             $all_produk = Produk::where('id_kategori', '=', $kategori->id)->Paginate(20);
-            $all_kategori = Kategori::all();
+            $all_kategori = Kategori::orderBy('nama_kategori','asc')->get();
             return view('produk.daftar-produk', compact('all_produk', 'all_kategori'));
         }
         return abort(404);
