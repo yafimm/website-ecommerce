@@ -11,10 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+
+Route::group(['middleware' => ['web', 'auth']], function(){
+    // Route::get('zakat/create', 'ZakatController@create_user')->name('zakat.create.user');
+    // Route::get('sumbangan/create', 'SumbanganController@create_user')->name('sumbangan.create.user');
+    // Route::post('dashboard/account', 'UsersController@update_account')->name('account.update');
+    // Route::put('dashboard/account/password', 'UsersController@update_password')->name('account.password.update');
+    // Route::get('pesan/history', 'Pesancontroller@index_history')->name('pesan.history');
+    // Route::resource('pesan', 'PesanController');
 });
 
-Auth::routes();
+
+Route::group(['prefix' => 'admin', 'middleware' => ['web','admin']], function(){
+    Route::resource('kategori', 'KategoriController');
+    Route::resource('produk', 'ProdukController');
+});
 
 Route::get('/', 'HomeController@index')->name('home');
