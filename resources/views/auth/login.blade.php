@@ -7,8 +7,8 @@
 				<div class="banner_content text-center">
 					<h2>Login/Register</h2>
 					<div class="page_link">
-						<a href="index.html">Home</a>
-						<a href="login.html">Login</a>
+						<a href="{{ url('') }}">Home</a>
+						<a href="{{ route('login') }}">Login</a>
 					</div>
 				</div>
 			</div>
@@ -26,26 +26,28 @@
 						<div class="hover">
 							<h4>New to our website?</h4>
 							<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-							<a class="main_btn" href="registration.html">Create an Account</a>
+							<a class="main_btn" href="{{ route('register') }}">Create an Account</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="login_form_inner">
 						<h3>Log in to enter</h3>
+						@include('_partial.flash_message')
 						<form class="row login_form" action="{{ route('login') }}" method="post" id="contactForm" novalidate="novalidate">
 							@method('post')
 							@CSRF
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="name" name="username" placeholder="Username" value="{{ old('username') }}">
-								@error('username')
-									<span class="invalid-feedback" role="alert">
-											<strong>{{ $message }}</strong>
-									</span>
-								@enderror
+								@if($errors->has('username'))
+		 				    <small class="form-text text-danger">*{{ $errors->first('username') }}</small>
+		 				    @endif
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="name" name="password" placeholder="Password">
+								@if($errors->has('password'))
+								<small class="form-text text-danger">*{{ $errors->first('password') }}</small>
+								@endif
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="creat_account">

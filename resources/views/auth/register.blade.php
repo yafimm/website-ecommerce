@@ -7,8 +7,8 @@
 								<div class="banner_content text-center">
 									<h2>Register</h2>
 									<div class="page_link">
-										<a href="index.html">Home</a>
-										<a href="registration.html">Register</a>
+										<a href="{{ url('') }}">Home</a>
+										<a href="{{ route('register') }}">Register</a>
 									</div>
 								</div>
 							</div>
@@ -26,7 +26,7 @@
 										<div class="hover">
 											<h4>Already have an account??</h4>
 											<p>login now to enjoy complete access to our website</p>
-											<a class="main_btn" href="#">Login</a>
+											<a class="main_btn" href="{{ route('login') }}">Login</a>
 										</div>
 									</div>
 								</div>
@@ -43,7 +43,7 @@
                         @endif
                       </div>
                       <div class="col-md-12 form-group">
-												<input class="form-control" type="text" name="name" placeholder="Full name" value="{{ old('nama') }}">
+												<input class="form-control" type="text" name="name" placeholder="Full name" value="{{ old('name') }}">
                         @if($errors->has('name'))
                           <small class="form-text text-danger">*{{ $errors->first('name') }}</small>
                         @endif
