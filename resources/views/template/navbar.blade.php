@@ -51,8 +51,9 @@
 									<hr>
 
 									<li class="nav-item">
-										<a href="{{ route('cart.index') }}" class="icons">
+										<a href="{{ route('cart.index') }}" class="notification icons">
 											<i class="lnr lnr lnr-cart"></i>
+											<span class="badge">3</span>
 										</a>
 									</li>
 

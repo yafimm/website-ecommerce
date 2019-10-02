@@ -4482,3 +4482,27 @@ h6 {
   margin-right: 10px;
   margin-left: 10px;
 }
+.notification {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 3px 5px;
+  border-radius: 50%;
+  background-color: red;
+  color: white; 
+}
+.badge{
+  font-size: 12px;
+}
