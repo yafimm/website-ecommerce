@@ -32,6 +32,7 @@ Route::group(['middleware' => ['web']], function(){
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
+    Route::post('/cart/checkout', 'TransaksiController@store')->name('transaksi.store');
     Route::get('dashboard', 'UsersController@dashboard')->name('user.dashboard');
     Route::get('/profile/password', 'UsersController@edit_password')->name('user.password.edit');
     Route::get('/profile', 'UsersController@edit_profile')->name('user.profile.edit');

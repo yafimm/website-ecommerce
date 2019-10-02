@@ -18,7 +18,7 @@ class CreateDetailTransaksiTable extends Migration
             $table->integer('id_transaksi')->unsigned();
             $table->integer('id_produk')->unsigned();
             $table->integer('harga');
-            $table->integer('diskon');
+            $table->integer('jumlah');
             $table->timestamps();
         });
 

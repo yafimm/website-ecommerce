@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Steevenz\Rajaongkir;
 use Cart;
+use App\Transaksi;
 
 class TransaksiController extends Controller
 {
@@ -20,30 +21,51 @@ class TransaksiController extends Controller
           return view('transaksi.detailuser', compact('transaksi', 'transaksi_produk'));
     }
 
+    private function set_alamat_tujuan($id, $alamat_detail){
+          $rajaongkir = new Rajaongkir('0b66d0686246de09238dc70b8d026ec2', Rajaongkir::ACCOUNT_STARTER);
+          $alamat = $rajaongkir->getCity($id); //untuk sementara tujuan hanya sampai kota, karena pake rajaongkir yang free;
+          if($alamat){
+              return ['kodepos' => $alamat['postal_code'],
+                      'kota' => $alamat['type']." ".$alamat['city_name'],
+                      'provinsi' => $alamat['province'],
+                      'alamat' => $alamat_detail];
+          }else{
+              return false;
+          }
+    }
+
+    private function get_ongkir_by_id($id)
+    {
+          $rajaongkir = new Rajaongkir('0b66d0686246de09238dc70b8d026ec2', Rajaongkir::ACCOUNT_STARTER);
+          $berat = 500; //ini angka dummy dulu
+          $kurir = 'jne';
+          $kota_tujuan_id = $id;
+          $kota_asal_id = 23; //ceritanya tokonya dibandung, id kota bandung = 23
+          $list_biaya = $rajaongkir->getCost(['city' => $kota_asal_id], ['city' => $kota_tujuan_id], $berat, $kurir);
+          return $list_biaya['costs'][0]['cost'][0]['value']; //return gini sengaja karena cuma mau ngambil value integernya aja
+    }
+
+
     //fungsi ini ngambil data detail transaksi dari cart
     private function data_detail_transaksi()
     {
-          $size = $warna = $harga = $jumlah = $id_produk = $dataProdukTransaksi = array();
-          $all_data = Cart::content(); // ngambil semua data cart dari class Cart
+           $harga = $jumlah = $id_produk = $dataProdukTransaksi = array();
+           $all_data = Cart::getContent(); // ngambil semua data cart dari class Cart
 
           if($all_data != null){
               foreach ($all_data as $key => $data) {
                 array_push($id_produk, $data->id);
-                array_push($size, $data->options->size);
-                array_push($warna, $data->options->color);
                 array_push($harga, $data->price);
-                array_push($jumlah, $data->qty);
+                array_push($jumlah, $data->quantity);
               }
 
               //Fungsi biar array jadi "nama" => nilai , soalnya data ini digunakan untuk attach ke tabel relasinya
-              $size = Yaf_give_indexArr("size", $size);
-              $warna = Yaf_give_indexArr("warna", $warna);
               $harga = Yaf_give_indexArr("harga", $harga);
               $jumlah = Yaf_give_indexArr("jumlah", $jumlah);
 
               // kombinasi dari semua array jadi satu array sesuai dengan indexnya
               foreach($id_produk as $key=>$val){ // Loop though one array
-                $dataProdukTransaksi['detail'][$key] = $size[$key] + $warna[$key] + $harga[$key] + $jumlah[$key];
+                $dataProdukTransaksi['detail'][$key] =  $harga[$key] + $jumlah[$key];
               }
 
               $dataProdukTransaksi['id_produk'] = $id_produk;
@@ -100,39 +122,41 @@ class TransaksiController extends Controller
           {
               $input = $request->all();
               $id_kota = $input['city_id'];
-              $input['alamat'] = $this->set_alamat_tujuan($input['city_id'], $input['alamat_detail']);
-              if($input['alamat'])
+              $alamat = $this->set_alamat_tujuan($input['city_id'], $input['alamat_detail']);
+              if($alamat)
               {
                   $input['id'] = setIdTransaksi();
-                  $input['username'] = \Auth::guard('users')->user()->username;
-                  $input['status'] = 'Belum dibayar';
+                  $input['id_user'] = \Auth::user()->id;
+                  $input['status'] = 'Unpaid';
                   $input['ongkir'] = $this->get_ongkir_by_id($id_kota);
-                  $input['total_harga'] = integer_format(Cart::total()); // bawaan dari cartnya string, jadi harus dirubah integer
-
+                  $input['subtotal'] = integer_format(Cart::getTotal()); // bawaan dari cartnya string, jadi harus dirubah integer
+                  $input['kota'] = $alamat['kota'];
+                  $input['no_telp'] = $input['no_telp'];
+                  $input['provinsi'] = $alamat['provinsi'];
+                  $input['kodepos'] = $alamat['kodepos'];
+                  $input['alamat'] = $alamat['alamat'];
                   // Transaksi hanya butuh data, id, username, status, ongkir, totalharga
                   $transaksi = Transaksi::create($input);
 
-                  $alamat = new Alamat($input['alamat']);
-                  $transaksi->alamat()->save($alamat); //input data ke tabel alamat one to one relation
 
                   foreach ($dataProdukTransaksi['id_produk'] as $key => $data) {
                       $transaksi->produk()->attach($dataProdukTransaksi['id_produk'][$key], $dataProdukTransaksi['detail'][$key]);
                   }
-                  Cart::destroy();
-                  return redirect('dashboard/transaksi?id='.$input['id'])->with('flash_message', 'Transaksi Berhasil disimpan')
+                  Cart::clear();
+                  return redirect('')->with('flash_message', 'Transaction successfully made, pay immediately to complete the transaction process')
                                                                           ->with('alert-class', 'alert-success');
-              }
+                }
                 else
-              {
-                  return redirect('cart')->with('flash_message', 'Alamat tujuan pengiriman tidak ditemukan!')
-                                        ->with('alert-class', 'alert-danger');
-              }
-          }
-            else
-          {
-              return redirect('cart')->with('flash_message', 'Keranjangmu Kosong, pilih barangmu yang akan dibeli lalu masukkan kedalam keranjang dan lanjutkan transaksi !')
-                                     ->with('alert-class', 'alert-danger');
-          }
+                {
+                    return redirect()->route('transaksi.create')->with('flash_message', 'Destination not found!!')
+                                          ->with('alert-class', 'alert-danger');
+                }
+            }
+              else
+            {
+                return redirect()->route('transaksi.create')->with('flash_message', 'Your cart is empty, look for your favorite product and add it to the cart')
+                                       ->with('alert-class', 'alert-danger');
+            }
     }
 
 

@@ -20,7 +20,6 @@ class CreateProdukTable extends Migration
             $table->string('slug');
             $table->integer('stok');
             $table->integer('harga');
-            $table->integer('diskon')->nullable();
             $table->string('gambar1')->nullable();
             $table->string('gambar2')->nullable();
             $table->string('gambar3')->nullable();

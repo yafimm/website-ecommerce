@@ -16,10 +16,15 @@ class CreateTransaksiTable extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_user')->unsigned();
-            $table->integer('id_admin')->unsigned();
-            $table->enum('status',['Selesai', 'Belum selesai', 'Sedang dikirim']);
+            $table->integer('id_admin')->unsigned()->nullable();
+            $table->enum('status',['Done', 'Unpaid', 'Is being sent']);
+            $table->string('kota');
+            $table->string('provinsi');
+            $table->string('no_telp');
+            $table->string('kodepos');
             $table->string('alamat');
-            $table->integer('total_harga');
+            $table->integer('ongkir');
+            $table->integer('subtotal');
             $table->timestamps();
         });
         Schema::table('detail_transaksi', function (Blueprint $table){

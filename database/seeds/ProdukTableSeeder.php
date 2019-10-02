@@ -18,7 +18,6 @@ class ProdukTableSeeder extends Seeder
         $produk->slug = Str::slug($produk->nama, '-');
         $produk->stok = 20;
         $produk->harga = 20000;
-        $produk->diskon = 0;
         $produk->gambar1 = "dummyproduk1.jpg";
         $produk->save();
 
@@ -28,7 +27,6 @@ class ProdukTableSeeder extends Seeder
         $produk->slug = Str::slug($produk->nama, '-');
         $produk->stok = 20;
         $produk->harga = 20000;
-        $produk->diskon = 0;
         $produk->gambar1 = "dummyproduk2.jpg";
         $produk->save();
 
@@ -38,7 +36,6 @@ class ProdukTableSeeder extends Seeder
         $produk->slug = Str::slug($produk->nama, '-');
         $produk->stok = 20;
         $produk->harga = 20000;
-        $produk->diskon = 0;
         $produk->gambar1 = "dummyproduk3.jpg";
         $produk->save();
 
@@ -48,7 +45,6 @@ class ProdukTableSeeder extends Seeder
         $produk->slug = Str::slug($produk->nama, '-');
         $produk->stok = 20;
         $produk->harga = 20000;
-        $produk->diskon = 0;
         $produk->gambar1 = "dummyproduk4.jpg";
         $produk->save();
 
@@ -58,7 +54,6 @@ class ProdukTableSeeder extends Seeder
         $produk->slug = Str::slug($produk->nama, '-');
         $produk->stok = 20;
         $produk->harga = 20000;
-        $produk->diskon = 0;
         $produk->gambar1 = "dummyproduk5.jpg";
         $produk->save();
 
@@ -68,7 +63,6 @@ class ProdukTableSeeder extends Seeder
         $produk->slug = Str::slug($produk->nama, '-');
         $produk->stok = 20;
         $produk->harga = 20000;
-        $produk->diskon = 0;
         $produk->gambar1 = "dummyproduk6.jpg";
         $produk->save();
 
@@ -78,7 +72,6 @@ class ProdukTableSeeder extends Seeder
         $produk->slug = Str::slug($produk->nama, '-');
         $produk->stok = 0;
         $produk->harga = 20000;
-        $produk->diskon = 0;
         $produk->gambar1 = "dummyproduk7.jpg";
         $produk->save();
     }
