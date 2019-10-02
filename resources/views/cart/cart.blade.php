@@ -20,6 +20,7 @@
 	<!--================Cart Area =================-->
 	<section class="cart_area">
 		<div class="container">
+			@include('_partial.flash_message')
 			<div class="cart_inner">
 				<div class="table-responsive">
 					<table class="table">
@@ -33,30 +34,34 @@
 							</tr>
 						</thead>
 						<tbody>
+							<form class="" action="{{ route('cart.update') }}" method="post">
+							@csrf
+							@method('put')
 							<?php $subtotal = 0 ?>
 							@foreach($all_cart as $cart)
 							<?php $subtotal += $cart->price * $cart->quantity ?>
 							<tr id="row-{{$cart->id}}">
 								<td>
+									<input type="hidden" name="rowId[]" value="{{ $cart->id }}">
 									<div class="media">
 										<div class="d-flex">
 											<img class="img-checkout" src="{{ asset('images/produk/'. $cart->attributes->image) }}" alt="">
 										</div>
 										<div class="media-body">
-											<p>{{ $cart->name }}</p>
+											<a href="{{ route('produk.show_produk', $cart->attributes->slug) }}">{{ $cart->name }}</a>
 										</div>
 									</div>
 								</td>
 								<td>
-									<h5>Rp. {{ $cart->price }}</h5>
+									<h5>Rp. {{ helper_money_format($cart->price) }}</h5>
 								</td>
 								<td>
 									<div class="product_count">
-										<input type="number" class="qty-cart" name="jumlah" value="{{ $cart->quantity }}" data-id="{{ $cart->id }}" data-price="{{ $cart->price }}" min="1" max="100">
+										<input type="number" class="qty-cart" name="quantity[]" value="{{ $cart->quantity }}" data-id="{{ $cart->id }}" data-price="{{ $cart->price }}" min="1" max="100">
 									</div>
 								</td>
 								<td>
-									<h5 id="total-price-{{ $cart->id }}">Rp. {{ $cart->price *  $cart->quantity }}</h5>
+									<h5 id="total-price-{{ $cart->id }}">Rp. {{ helper_money_format($cart->price *  $cart->quantity) }}</h5>
 								</td>
 								<td>
 									<input type="submit" name="delete" class="genric-btn danger circle delete-cart" data-id="{{ $cart->id }}"  value="Delete">
@@ -75,10 +80,12 @@
 									<h5>Subtotal</h5>
 								</td>
 								<td>
-									<h5 id="subtotal-cart">Rp. {{ $subtotal }}</h5>
+									<h5 id="subtotal-cart">Rp. {{ helper_money_format($subtotal) }}</h5>
 								</td>
 								<td>
-
+									@if(!$all_cart->isEmpty())
+									<button class="main_btn" type="submit" href="{{ route('cart.update') }}">Update Cart</button>
+									@endif
 								</td>
 							</tr>
 
@@ -98,10 +105,13 @@
 								<td>
 									<div class="checkout_btn_inner">
 										<a class="gray_btn" href="{{ route('produk.index_produk') }}">Continue Shopping</a>
+									@if(!$all_cart->isEmpty())
 										<a class="main_btn" href="{{ route('transaksi.create') }}">Proceed to checkout</a>
+									@endif
 									</div>
 								</td>
 							</tr>
+						 </form>
 						</tbody>
 					</table>
 				</div>

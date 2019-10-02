@@ -27,10 +27,10 @@
 						<h3>Billing Details</h3>
 						<form class="row contact_form" action="#" method="post" novalidate="novalidate">
 							<div class="col-md-12 form-group p_star">
-								<input type="text" class="form-control" id="name" name="name" value="{{ \Auth::user()->nama }}" placeholder="Full Name" required>
+								<input type="text" class="form-control" id="name" name="name" value="{{ (\Auth::check()) ? \Auth::user()->nama : '' }}" placeholder="Full Name" required>
 							</div>
 							<div class="col-md-12 form-group p_star">
-								<input type="text" class="form-control" id="number" placeholder="Phone Number" name="no_telp" value="{{ \Auth::user()->no_telp }}" required>
+								<input type="text" class="form-control" id="number" placeholder="Phone Number" name="no_telp" value="{{ (\Auth::check()) ? \Auth::user()->no_telp : '' }}" required>
 							</div>
 							<div class="col-md-12 form-group p_star">
 								<select class="col-md-12 form-group p_star" name="city_id" id="city_id">
@@ -51,6 +51,7 @@
 									<h3>Shipping Details</h3>
 								</div>
 								<textarea class="form-control" id="kecamatan" placeholder="Building names, Street names, Etc ..." name="kecamatan" required></textarea>
+								<small class="form-text text-info">*This package will be sent using JNE services</small>
 							</div>
 						</form>
 					</div>
@@ -63,14 +64,15 @@
 										<span>Total</span>
 									</a>
 								</li>
-								@foreach($all_cart as $cart)
-								<li>
-									<a href="#">{{ $cart->name }}
-										<span class="middle">x {{ $cart->quantity }}</span>
-										<span class="last">Rp. {{ helper_money_format($cart->price * $cart->quantity) }}</span>
-									</a>
-								</li>
-								@endforeach
+									@foreach($all_cart as $cart)
+									<li>
+										<a href="#">{{ $cart->name }}
+											<span class="middle">x {{ $cart->quantity }}</span>
+											<span class="last">Rp. {{ helper_money_format($cart->price * $cart->quantity) }}</span>
+										</a>
+									</li>
+									@endforeach
+								@endif
 							</ul>
 							<ul class="list list_2">
 								<li>
@@ -89,7 +91,11 @@
 									</a>
 								</li>
 							</ul>
-							<input style="width: 100%;" type="submit" name="delete" class="main_btn" value="PROCEED ORDER">
+							@if(Auth::check())
+								<input style="width: 100%;" type="submit" name="delete" class="main_btn" value="PROCEED ORDER">
+							@else
+								<a class="main_btn" href="{{ route('login') }}">Login first to continue ..</a>
+							@endif
 						</div>
 					</div>
 				</div>

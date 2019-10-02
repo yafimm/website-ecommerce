@@ -3,6 +3,7 @@
 <!--================Category Product Area =================-->
 <section class="cat_product_area section_gap">
 		<div class="container-fluid">
+			@include('_partial.flash_message')
 			<div class="row flex-row-reverse">
 				<div class="col-lg-9">
 					<div class="product_top_bar">

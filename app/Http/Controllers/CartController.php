@@ -15,11 +15,17 @@ class CartController extends Controller
     public function index(){
       $all_cart = Cart::getContent();
       $totalHargaProduk = Cart::getTotal();
+      // dd($all_cart);
       return view('cart.cart', compact('all_cart', 'totalHargaProduk'));
     }
 
     public function add(Request $request)
     {
+       if(\Auth::check())
+       {
+          Cart::session(\Auth::user()->username); //kalo login, session idnya sesuain username
+       }
+
        $produk = Produk::find($request->id);
        if($produk && $produk->stok > 0 && $produk->stok > $request->jumlah){
          Cart::add([
@@ -27,7 +33,8 @@ class CartController extends Controller
                 'name' => $produk->nama,
                 'price' => $produk->harga,
                 'quantity' => $request->jumlah,
-                'attributes' => ['image'=> $produk->gambar1]
+                'attributes' => ['image'=> $produk->gambar1,
+                                  'slug' => $produk->slug]
            ]);
          return $produk->nama;
        }
@@ -37,7 +44,7 @@ class CartController extends Controller
 
     public function basket()
     {
-       $response = Cart::getContent()->count();
+       $response = Cart::getTotalQuantity();
        return $response;
         // $id = 'TRS190513002';
         // $Transaksi = Transaksi::find($id);
@@ -79,13 +86,17 @@ class CartController extends Controller
     public function update(Request $request)
     {
         $quantity = $request->quantity;
-        $rowid = $request->rowid;
-
-        for ($i=0; $i<count($rowid); $i++) {
-            Cart::update($rowid[$i], array('qty' => $quantity[$i]));
+        $rowId = $request->rowId;
+        for ($i=0; $i<count($rowId); $i++) {
+            $update = Cart::update($rowId[$i], array('quantity' => array(
+                                                  'relative' => false,
+                                                  'value' => $quantity[$i]
+                                              )));
         }
-
-        return Redirect::to('basket');
+        if($update){
+          return redirect()->route('cart.index')->with('alert-class', 'alert-success')->with('flash_message', 'Cart updated successfully');
+        }
+        return redirect()->route('cart.index')->with('alert-class', 'alert-danger')->with('flash_message', 'Cart failed to updated');
     }
 
     public function cekOngkos(Request $request){

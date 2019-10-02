@@ -156,6 +156,10 @@ function totalAll(){
   });
 
   $('.qty-cart').on('change', function() {
-    let harga = $(this).data('price') * this.value;
-    $('#total-price-'+$(this).data('id')).html('Rp. '+ harga)
+    let hargaawal = $(this).data('price');
+    let hargasekarang = hargaawal * this.value;
+    let subtotal = convertToAngka($('#subtotal-cart').html()) - hargaawal;
+    $('#total-price-' +$(this).data('id')).html(convertToRupiah(hargasekarang));
+    // $('#subtotal-cart').html(convertToRupiah(subtotal + hargasekarang));
+    let hargaterakhir = subtotal + hargasekarang;
   });

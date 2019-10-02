@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -41,5 +42,20 @@ class LoginController extends Controller
     public function username()
     {
         return 'username';
+    }
+
+    public function showLoginForm(Request $request)
+    {
+        $request->session()->put('link', url()->previous());
+        return view('auth.login');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        if($request->session()->exists('link'))
+        {
+            return redirect($request->session()->pull('link'));
+        }
+        return redirect('/');
     }
 }
