@@ -32,7 +32,7 @@
 								<a href="{{ route('produk.show_produk', $produk->slug) }}">
 									<h4>{{ $produk->nama }}</h4>
 								</a>
-								<h5>Rp. {{ $produk->harga }}</h5>
+								<h5>Rp. {{ helper_money_format($produk->harga) }}</h5>
 							</div>
 						</div>
 						@endforeach

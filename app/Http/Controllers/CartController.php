@@ -10,11 +10,11 @@ use Steevenz\Rajaongkir;
 
 class CartController extends Controller
 {
+
+
     public function index(){
       $all_cart = Cart::getContent();
       $totalHargaProduk = Cart::getTotal();
-      // dd($all_cart);
-      // $dataOngkir = RajaOngkir::city();
       return view('cart.cart', compact('all_cart', 'totalHargaProduk'));
     }
 
@@ -37,7 +37,7 @@ class CartController extends Controller
 
     public function basket()
     {
-       $response = Cart::getContent()->toJson(JSON_PRETTY_PRINT);
+       $response = Cart::getContent()->count();
        return $response;
         // $id = 'TRS190513002';
         // $Transaksi = Transaksi::find($id);
@@ -91,9 +91,18 @@ class CartController extends Controller
     public function cekOngkos(Request $request){
        $kota_asal_id = 23;
        $kota_tujuan_id = $request->idkota;
+       // $kota_tujuan_id = 21;
        $berat = 1700; // dalam gram
        $kurir = "jne";
-       $list_biaya = RajaOngkir::cost($kota_asal_id, $kota_tujuan_id, $berat, $kurir);
-       return $list_biaya;
+       $rajaongkir = new Rajaongkir('0b66d0686246de09238dc70b8d026ec2', Rajaongkir::ACCOUNT_STARTER);
+       $cost = $rajaongkir->getCost(
+                                      ['city' => $kota_asal_id],
+                                      ['city' => $kota_tujuan_id],
+                                      $berat,
+                                      $kurir);
+
+
+        // dd($cost);
+       return $cost;
     }
 }

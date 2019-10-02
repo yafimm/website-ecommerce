@@ -17,6 +17,10 @@
 	<link rel="stylesheet" href="{{ asset('vendors/nice-select/css/nice-select.css') }}">
 	<link rel="stylesheet" href="{{ asset('vendors/animate-css/animate.css') }}">
 	<link rel="stylesheet" href="{{ asset('vendors/jquery-ui/jquery-ui.css') }}">
+
+	<!-- Latest compiled and minified CSS Bootstrap select -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
 	<!-- main css -->
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
@@ -34,6 +38,7 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="{{ asset('js/yaff_helper.js') }}"></script>
 	<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 	<script src="{{ asset('js/popper.js') }}"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -50,7 +55,12 @@
 	<script src="{{ asset('js/mail-script.js') }}"></script>
 	<script src="{{ asset('js/theme.js') }}"></script>
 	<script src="{{ asset('js/cart.js') }}"></script>
+	<script src="{{ asset('js/transaksi.js') }}"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+
+	<!-- Latest compiled and minified JavaScript Bootstrap select -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 </body>
 
 </html>

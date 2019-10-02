@@ -84,10 +84,12 @@ class TransaksiController extends Controller
 
   public function create()
   {
-        $cart_all = Cart::getContent();
+        $all_cart = Cart::getContent();
         $totalHargaProduk = Cart::getTotal();
-        // $dataOngkir = RajaOngkir::city();
-        return view('transaksi.checkout', compact('cart_all', 'totalHargaProduk'));
+        $rajaongkir = new Rajaongkir('0b66d0686246de09238dc70b8d026ec2', Rajaongkir::ACCOUNT_STARTER);
+        $dataOngkir = $rajaongkir->getCities();
+        // dd($dataOngkir);
+        return view('transaksi.checkout', compact('all_cart', 'totalHargaProduk', 'dataOngkir'));
   }
 
   //Fungsi untuk menampilkan data transaksi user

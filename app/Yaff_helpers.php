@@ -36,7 +36,7 @@ if(!function_exists('integer_format')) {
 
 if(!function_exists('helper_money_format')) {
     function helper_money_format($data) {
-        return number_format($data, 2, ',', '.');
+        return number_format($data, 0, ',', '.');
     }
 }
 

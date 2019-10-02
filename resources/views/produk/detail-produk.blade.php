@@ -36,7 +36,7 @@
 					<div class="s_product_text">
 						<input type="hidden" name="id" value="{{ $produk->id }}">
 						<h3>{{ $produk->nama }}</h3>
-						<h2>Rp. {{ $produk->harga }}</h2>
+						<h2>Rp. {{ helper_money_format($produk->harga) }}</h2>
 						<ul class="list">
 							<li>
 								<a class="active" href="#">

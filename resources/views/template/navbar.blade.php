@@ -53,7 +53,7 @@
 									<li class="nav-item">
 										<a href="{{ route('cart.index') }}" class="notification icons">
 											<i class="lnr lnr lnr-cart"></i>
-											<span class="badge">3</span>
+											<span class="badge" id="cart-number">0</span>
 										</a>
 									</li>
 

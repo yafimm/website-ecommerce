@@ -18,9 +18,11 @@ Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/user/{username}', 'UsersController@show')->name('user.show');
 
 Route::group(['middleware' => ['web']], function(){
+  Route::post('/shipping', 'CartController@cekOngkos')->name('cart.ongkir');
   Route::get('/cart', 'CartController@index')->name('cart.index');
   Route::post('/cart/add', 'CartController@add')->name('cart.store');
   Route::post('/cart/remove', 'CartController@remove')->name('cart.remove');
+  Route::get('/cart/basket', 'CartController@basket')->name('cart.basket');
   Route::get('/shop', 'ProdukController@index_produk')->name('produk.index_produk');
   Route::get('/cart/checkout', 'TransaksiController@create')->name('transaksi.create');
   Route::get('/shop/{slug}', 'ProdukController@produk_kategori')->name('produk.index_produk_kategori');
