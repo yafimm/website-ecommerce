@@ -21,11 +21,6 @@ class CartController extends Controller
 
     public function add(Request $request)
     {
-       if(\Auth::check())
-       {
-          Cart::session(\Auth::user()->username); //kalo login, session idnya sesuain username
-       }
-
        $produk = Produk::find($request->id);
        if($produk && $produk->stok > 0 && $produk->stok > $request->jumlah){
          Cart::add([

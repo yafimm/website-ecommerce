@@ -17,7 +17,6 @@ function totalCountCart(){
         success: function(response)
         {
           $('#cart-number').html(response);
-          console.log(response);
         },
         error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
              console.log(JSON.stringify(jqXHR));

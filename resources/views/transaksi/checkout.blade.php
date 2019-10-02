@@ -72,7 +72,6 @@
 										</a>
 									</li>
 									@endforeach
-								@endif
 							</ul>
 							<ul class="list list_2">
 								<li>
