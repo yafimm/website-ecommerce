@@ -60,14 +60,17 @@
 						<div class="f_p_item">
 							<div class="f_p_img">
 								<img class="img-fluid" src="{{ asset('images/produk/'. $produk->gambar1) }}" alt="">
+								@if($produk->stok <= 0)
 								<div class="centered">
 									<h4>Out of Stock</h4>
 								</div>
+								@else
 								<div class="p_icon">
 									<a href="#" class="add-to-cart" data-id="{{ $produk->id }}">
 										<i class="lnr lnr-cart"></i>
 									</a>
 								</div>
+								@endif
 							</div>
 							<a href="{{ route('produk.show_produk', $produk->slug ) }}">
 								<h4>{{ $produk->nama }}</h4>

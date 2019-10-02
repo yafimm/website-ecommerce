@@ -43,7 +43,7 @@ class KategoriTableSeeder extends Seeder
         $kategori->save();
 
         $kategori = new Kategori;
-        $kategori->nama_kategori = "Soni";
+        $kategori->nama_kategori = "Sony";
         $kategori->slug = Str::slug($kategori->nama_kategori);
         $kategori->save();
 

@@ -20,12 +20,27 @@
 							</ol>
 							<div class="carousel-inner">
 								<div class="carousel-item active">
+									@if($produk->stok <= 0)
+									<div class="centered">
+										<h4>Out of Stock</h4>
+									</div>
+									@endif
 									<img class="d-block w-100" src="{{ asset('images/produk/'. $produk->gambar1) }}" alt="First slide">
 								</div>
 								<div class="carousel-item">
+									@if($produk->stok <= 0)
+									<div class="centered">
+										<h4>Out of Stock</h4>
+									</div>
+									@endif
 									<img class="d-block w-100" src="{{ asset('images/produk/'. $produk->gambar1) }}" alt="Second slide">
 								</div>
 								<div class="carousel-item">
+									@if($produk->stok <= 0)
+									<div class="centered">
+										<h4>Out of Stock</h4>
+									</div>
+									@endif
 									<img class="d-block w-100" src="{{ asset('images/produk/'. $produk->gambar1) }}" alt="Third slide">
 								</div>
 							</div>
@@ -39,16 +54,17 @@
 						<h2>Rp. {{ helper_money_format($produk->harga) }}</h2>
 						<ul class="list">
 							<li>
-								<a class="active" href="#">
+								<a class="active" href="{{ route('produk.index_produk_kategori', $produk->kategori->slug) }}">
 									<span>Category</span> : {{ $produk->kategori->nama_kategori }}</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="#" disabled>
 									<span>Availibility</span> : {{ $produk->stok }} Stock</a>
 							</li>
 						</ul>
 						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for something that
 							can make your interior look awesome, and at the same time give you the pleasant warm feeling during the winter.</p>
+						@if($produk->stok > 0)
 						<div class="product_count">
 							<label for="qty">Quantity:</label>
 							<input type="text" name="jumlah" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
@@ -61,8 +77,13 @@
 								<i class="lnr lnr-chevron-down"></i>
 							</button>
 						</div>
+						@endif
 						<div class="card_area">
+							@if($produk->stok <= 0)
+							<button class="gray_btn" disabled>Out of stock</button>
+							@else
 							<a class="main_btn" id="add-to-cart" href="#">Add to Cart</a>
+							@endif
 						</div>
 					</div>
 				</div>

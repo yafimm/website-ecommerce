@@ -71,5 +71,15 @@ class ProdukTableSeeder extends Seeder
         $produk->diskon = 0;
         $produk->gambar1 = "dummyproduk6.jpg";
         $produk->save();
+
+        $produk = new Produk;
+        $produk->id_kategori = 7;
+        $produk->nama = "Case Sony yang terbaik sepanjang masa";
+        $produk->slug = Str::slug($produk->nama, '-');
+        $produk->stok = 0;
+        $produk->harga = 20000;
+        $produk->diskon = 0;
+        $produk->gambar1 = "dummyproduk7.jpg";
+        $produk->save();
     }
 }
