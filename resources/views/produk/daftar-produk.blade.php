@@ -24,7 +24,7 @@
 								<div class="f_p_img">
 									<img class="img-fluid" src="{{ asset('images/produk/'.$produk->gambar1) }}" alt="">
 									<div class="p_icon">
-										<a href="#">
+										<a href="#"  class="add-to-cart" data-id="{{ $produk->id }}">
 											<i class="lnr lnr-cart"></i>
 										</a>
 									</div>

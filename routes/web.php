@@ -19,6 +19,8 @@ Route::get('/user/{username}', 'UsersController@show')->name('user.show');
 
 Route::group(['middleware' => ['web']], function(){
   Route::get('/cart', 'CartController@index')->name('cart.index');
+  Route::post('/cart/add', 'CartController@add')->name('cart.store');
+  Route::post('/cart/remove', 'CartController@remove')->name('cart.remove');
   Route::get('/shop', 'ProdukController@index_produk')->name('produk.index_produk');
   Route::get('/cart/checkout', 'TransaksiController@create')->name('transaksi.create');
   Route::get('/shop/{slug}', 'ProdukController@produk_kategori')->name('produk.index_produk_kategori');

@@ -34,6 +34,7 @@
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
+						<input type="hidden" name="id" value="{{ $produk->id }}">
 						<h3>{{ $produk->nama }}</h3>
 						<h2>Rp. {{ $produk->harga }}</h2>
 						<ul class="list">
@@ -50,7 +51,7 @@
 							can make your interior look awesome, and at the same time give you the pleasant warm feeling during the winter.</p>
 						<div class="product_count">
 							<label for="qty">Quantity:</label>
-							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+							<input type="text" name="jumlah" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
 							 class="increase items-count" type="button">
 								<i class="lnr lnr-chevron-up"></i>
@@ -61,7 +62,7 @@
 							</button>
 						</div>
 						<div class="card_area">
-							<a class="main_btn" href="#">Add to Cart</a>
+							<a class="main_btn" id="add-to-cart" href="#">Add to Cart</a>
 						</div>
 					</div>
 				</div>

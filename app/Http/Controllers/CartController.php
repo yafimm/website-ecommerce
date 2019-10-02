@@ -11,17 +11,24 @@ use Steevenz\Rajaongkir;
 class CartController extends Controller
 {
     public function index(){
-      $cart_all = Cart::getContent();
+      $all_cart = Cart::getContent();
       $totalHargaProduk = Cart::getTotal();
+      // dd($all_cart);
       // $dataOngkir = RajaOngkir::city();
-      return view('cart.cart', compact('cart_all', 'totalHargaProduk'));
+      return view('cart.cart', compact('all_cart', 'totalHargaProduk'));
     }
 
     public function add(Request $request)
     {
        $produk = Produk::find($request->id);
        if($produk){
-         Cart::add($produk->id, $produk->nama, $produk->harga, $request->jumlah, ['image' => $produk->gambar]);
+         Cart::add([
+                'id' => $produk->id,
+                'name' => $produk->nama,
+                'price' => $produk->harga,
+                'quantity' => $request->jumlah,
+                'attributes' => ['image'=> $produk->gambar1]
+           ]);
          return $produk->nama;
        }
        return false;
@@ -55,7 +62,12 @@ class CartController extends Controller
     public function remove(Request $request)
     {
         $rowid = $request->rowId;
-        Cart::remove($rowid);
+        $remove = Cart::remove($rowid);
+        if($remove)
+        {
+          return 'Success';
+        }
+        return 'Failed';
     }
 
     public function destroy()

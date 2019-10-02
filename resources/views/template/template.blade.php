@@ -6,6 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="img/favicon.png" type="image/png">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Case-Sual</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
@@ -27,7 +28,9 @@
     @yield('content')
     @include('template.footer')
 
-
+		<script type="text/javascript">
+		var APP_URL = {!! json_encode(url('/')) !!}
+		</script>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -46,6 +49,8 @@
 	<script src="{{ asset('vendors/counter-up/jquery.counterup.js') }}"></script>
 	<script src="{{ asset('js/mail-script.js') }}"></script>
 	<script src="{{ asset('js/theme.js') }}"></script>
+	<script src="{{ asset('js/cart.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 
 </html>
