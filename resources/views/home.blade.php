@@ -60,6 +60,9 @@
 						<div class="f_p_item">
 							<div class="f_p_img">
 								<img class="img-fluid" src="{{ asset('images/produk/'. $produk->gambar1) }}" alt="">
+								<div class="centered">
+									<h4>Out of Stock</h4>
+								</div>
 								<div class="p_icon">
 									<a href="#" class="add-to-cart" data-id="{{ $produk->id }}">
 										<i class="lnr lnr-cart"></i>
