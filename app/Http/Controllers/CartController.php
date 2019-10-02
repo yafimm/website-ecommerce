@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 use App\Produk;
 use App\Transaksi;
 use Cart;
-use RajaOngkir;
+use Steevenz\Rajaongkir;
 
 class CartController extends Controller
 {
     public function index(){
-      $cart_all = Cart::content();
-      $totalHargaProduk = Cart::total();
-      $dataOngkir = RajaOngkir::city();
-      return view('cart.shopingcart', compact('cart_all', 'totalHargaProduk', 'dataOngkir'));
+      $cart_all = Cart::getContent();
+      $totalHargaProduk = Cart::getTotal();
+      // $dataOngkir = RajaOngkir::city();
+      return view('cart.cart', compact('cart_all', 'totalHargaProduk'));
     }
 
     public function add(Request $request)

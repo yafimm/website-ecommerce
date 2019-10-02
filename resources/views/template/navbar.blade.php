@@ -5,7 +5,7 @@
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<a class="navbar-brand logo_h" href="index.html">
-						<img src="img/logo.png" alt="">
+						<img src="{{ asset('img/logo.png') }}" alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 					 aria-expanded="false" aria-label="Toggle navigation">
@@ -67,13 +67,13 @@
 										</a>
 										<ul class="dropdown-menu">
 											<li class="nav-item">
-												<a class="nav-link" href="category.html">Profile</a>
+												<a class="nav-link" href="{{ route('user.show', \Auth::user()->username) }}">Profile</a>
 											</li>
 											<li class="nav-item">
-													<a class="nav-link" href="single-product.html">Change Profiles</a>
+													<a class="nav-link" href="{{ route('user.profile.edit') }}">Change Profiles</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="checkout.html">Change Password</a>
+												<a class="nav-link" href="{{ route('user.password.edit') }}">Change Password</a>
 											</li>
 											<li class="nav-item">
 												<a class="nav-link" href="cart.html">Transaction</a>

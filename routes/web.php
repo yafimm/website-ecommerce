@@ -18,16 +18,20 @@ Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/user/{username}', 'UsersController@show')->name('user.show');
 
 Route::group(['middleware' => ['web']], function(){
+  Route::get('/cart', 'CartController@index')->name('cart.index');
   Route::get('/shop', 'ProdukController@index_produk')->name('produk.index_produk');
+  Route::get('/cart/checkout', 'TransaksiController@create')->name('transaksi.create');
   Route::get('/shop/{slug}', 'ProdukController@produk_kategori')->name('produk.index_produk_kategori');
   Route::get('/p/{slug}', 'ProdukController@show_produk')->name('produk.show_produk');
+  Route::get('/u/{username}', 'UsersController@show')->name('user.show');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('dashboard', 'UsersController@dashboard')->name('user.dashboard');
-    Route::get('dashboard/account', 'UsersController@account')->name('account.index');
-    Route::post('dashboard/account', 'UsersController@update_account')->name('account.update');
-    Route::put('dashboard/account/password', 'UsersController@update_password')->name('account.password.update');
+    Route::get('/profile/password', 'UsersController@edit_password')->name('user.password.edit');
+    Route::get('/profile', 'UsersController@edit_profile')->name('user.profile.edit');
+    Route::put('/profile', 'UsersController@update_account')->name('user.profile.update');
+    Route::put('/profile/password', 'UsersController@update_password')->name('user.password.update');
 
 });
 

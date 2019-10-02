@@ -66,19 +66,19 @@ class UsersController extends Controller
       $user = User::where('username', '=', $username)->first();
       if($user)
       {
-          return view('user.show', compact('user'));
+          return view('profil.index-user', compact('user'));
       }
       return abort(404);
   }
 
-  public function account()
+  public function edit_profile()
   {
-      $user = User::find(\Auth::user()->id);
-      if($user)
-      {
-          return view('user.account_index', compact('user'));
-      }
-      return abort(404);
+      return view('profil.edit-profile');
+  }
+
+  public function edit_password()
+  {
+      return view('profil.edit-password');
   }
 
   public function update_account(Request $request)
@@ -100,14 +100,14 @@ class UsersController extends Controller
               if(\Auth::user()->isAdmin()){
                   $route = 'account.index.admin';
               }else{
-                  $route = 'account.index';
+                  $route = "'user.show', {{ \Auth::user()->username }} ";
               }
 
               return redirect()->route($route)->with('flash_message', 'Data Akun berhasil diubah')
                                      ->with('alert-class', 'alert-success');
           }
           // kalo gagal dilempar kesini
-          return redirect()->route('user.account')->with('flash_message', 'Data Akun gagal diubah')
+          return redirect()->back()->with('flash_message', 'Data Akun gagal diubah')
                                     ->with('alert-class', 'alert-danger');
 
       }
@@ -132,10 +132,10 @@ class UsersController extends Controller
           if($user){
             if(Hash::check($request->old_password, $user->password)){
                 $user->update(['password' => bcrypt($request->new_password)]);
-                return redirect()->route('account.index')->with('flash_message', 'Password Akun berhasil diubah')
+                return redirect()->route('user.show', $user->username)->with('flash_message', 'Password Akun berhasil diubah')
                                                     ->with('alert-class', 'alert-success');
             }
-            return redirect()->route('account.index')->with('flash_message', 'Password lama tidak sesuai')
+            return redirect()->back()->with('flash_message', 'Password lama tidak sesuai')
                                                       ->with('alert-class', 'alert-success');
           }
           return abort(404);

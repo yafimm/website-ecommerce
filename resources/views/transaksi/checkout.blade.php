@@ -8,9 +8,9 @@
 				<div class="banner_content text-center">
 					<h2>Product Checkout</h2>
 					<div class="page_link">
-						<a href="index.html">Home</a>
-                        <a href="checkout.html">Chart</a>
-						<a href="checkout.html">Checkout</a>
+						<a href="{{ url('') }}">Home</a>
+                        <a href="{{ route('cart.index') }}">Cart</a>
+						<a href="{{ route('transaksi.create') }}">Checkout</a>
 					</div>
 				</div>
 			</div>

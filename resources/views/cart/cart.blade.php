@@ -7,8 +7,8 @@
 				<div class="banner_content text-center">
 					<h2>Shopping Cart</h2>
 					<div class="page_link">
-						<a href="index.html">Home</a>
-						<a href="cart.html">Cart</a>
+						<a href="{{ url('') }}">Home</a>
+						<a href="{{ route('cart.index') }}">Cart</a>
 					</div>
 				</div>
 			</div>
@@ -110,7 +110,7 @@
 									<input type="submit" name="delete" class="genric-btn danger circle" value="delete">
 								</td>
 							</tr>
-							
+
 							<tr>
 								<td>
 
@@ -125,10 +125,10 @@
 									<h5>$2160.00</h5>
 								</td>
 								<td>
-									
+
 								</td>
 							</tr>
-							
+
 							<tr class="out_button_area">
 								<td>
 
@@ -140,7 +140,7 @@
 
 								</td>
 								<td>
-									
+
 								</td>
 								<td>
 									<div class="checkout_btn_inner">

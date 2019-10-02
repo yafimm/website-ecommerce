@@ -14,28 +14,28 @@
 						<h6 class="footer_title">Instagram Feed</h6>
 						<ul class="list instafeed d-flex flex-wrap">
 							<li>
-								<img class="img-ig" src="img/instagram/1.png" alt="">
+								<img class="img-ig" src="{{ asset('img/instagram/1.png') }}" alt="">
 							</li>
 							<li>
-								<img class="img-ig" src="img/instagram/2.png" alt="">
+								<img class="img-ig" src="{{ asset('img/instagram/2.png') }}" alt="">
 							</li>
 							<li>
-								<img class="img-ig" src="img/instagram/3.png" alt="">
+								<img class="img-ig" src="{{ asset('img/instagram/3.png') }}" alt="">
 							</li>
 							<li>
-								<img class="img-ig" src="img/instagram/4.png" alt="">
+								<img class="img-ig" src="{{ asset('img/instagram/4.png') }}" alt="">
 							</li>
 							<li>
-								<img class="img-ig" src="img/instagram/5.png" alt="">
+								<img class="img-ig" src="{{ asset('img/instagram/5.png') }}" alt="">
 							</li>
 							<li>
-								<img class="img-ig" src="img/instagram/6.png" alt="">
+								<img class="img-ig" src="{{ asset('img/instagram/6.png') }}" alt="">
 							</li>
 							<li>
-								<img class="img-ig" src="img/instagram/7.png" alt="">
+								<img class="img-ig" src="{{ asset('img/instagram/7.png') }}" alt="">
 							</li>
 							<li>
-								<img class="img-ig" src="img/instagram/8.png" alt="">
+								<img class="img-ig" src="{{ asset('img/instagram/8.png') }}" alt="">
 							</li>
 						</ul>
 					</div>

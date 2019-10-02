@@ -20,14 +20,18 @@
 					<div class="product_image_area">
 						<div class="container">
 							<div class="text-center">
-								<h3 style="color: black; ">Dzaki Madhani</h3>
-								<img style="width: 250px; height: 250px; border-radius: 50%; margin: 20px;" src="img/product/feature-product/f-p-4.jpg">
+								<h3 style="color: black; ">{{ $user->nama }}</h3>
+								<img style="width: 250px; height: 250px; border-radius: 50%; margin: 20px;" src="{{ asset('img/product/feature-product/f-p-4.jpg') }}">
 							</div>
+
+						 	@if(Auth::user()->username == $user->username)
 							<div class="text-center">
-								<a href="#" class="genric-btn primary radius e-large" style="font-size: 20px !important; margin: 10px;">Change Profile</a>
-								<a href="#" class="genric-btn primary radius e-large" style="font-size: 20px !important; margin: 10px;">Change Password</a>
+								<a href="{{ route('user.profile.edit') }}" class="genric-btn primary radius e-large" style="font-size: 20px !important; margin: 10px;">Change Profile</a>
+								<a href="{{ route('user.password.edit') }}" class="genric-btn primary radius e-large" style="font-size: 20px !important; margin: 10px;">Change Password</a>
 								<a href="#" class="genric-btn primary radius e-large" style="font-size: 20px !important; margin: 10px;">Transaction History</a>
 							</div>
+
+							@endif
 							<div style="padding: 50px;">
 								<div class="row">
 									<div class="col-md-6">
@@ -57,7 +61,7 @@
 													<span>Sex</span>
 												</div>
 												<div class="col-md-8 info-profil">
-													<p>{{ $user->jenis_kelamin }}</p>
+													<p>{{ $user->gender }}</p>
 												</div>
 											</div>
 										</div>

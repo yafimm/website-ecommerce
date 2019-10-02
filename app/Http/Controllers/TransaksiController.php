@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Steevenz\Rajaongkir;
+use Cart;
 
 class TransaksiController extends Controller
 {
@@ -83,10 +84,10 @@ class TransaksiController extends Controller
 
   public function create()
   {
-        $cart_all = Cart::content();
-        $totalHargaProduk = Cart::total();
-        $dataOngkir = RajaOngkir::city();
-        return view('transaksi.checkout', compact('cart_all', 'totalHargaProduk', 'dataOngkir'));
+        $cart_all = Cart::getContent();
+        $totalHargaProduk = Cart::getTotal();
+        // $dataOngkir = RajaOngkir::city();
+        return view('transaksi.checkout', compact('cart_all', 'totalHargaProduk'));
   }
 
   //Fungsi untuk menampilkan data transaksi user
