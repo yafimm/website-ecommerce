@@ -18,10 +18,10 @@
 						<div class="row w-100">
 							<div class="col-lg-7 pr-0">
 								<ul class="nav navbar-nav center_nav pull-right">
-									<li class="nav-item active">
+									<li class="nav-item {{ (isset($halaman) && $halaman == 'home') ? 'active' : ''}}">
 										<a class="nav-link" href="{{ url('') }}">Home</a>
 									</li>
-									<li class="nav-item submenu dropdown">
+									<li class="nav-item submenu dropdown {{ (isset($halaman) && $halaman == 'shop') ? 'active' : ''}}">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
 										<ul class="dropdown-menu">
 											<li class="nav-item">
@@ -36,10 +36,10 @@
 										</ul>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="contact.html">Contact</a>
+										<a class="nav-link {{ (isset($halaman) && $halaman == 'contact') ? 'active' : ''}}" href="contact.html">Contact</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="contact.html">About Us</a>
+										<a class="nav-link {{ (isset($halaman) && $halaman == 'about') ? 'active' : ''}}" href="contact.html">About Us</a>
 									</li>
 								</ul>
 							</div>

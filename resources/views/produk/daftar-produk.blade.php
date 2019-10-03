@@ -53,12 +53,12 @@
 							</div>
 							<div class="widgets_inner">
 								<ul class="list">
-									<li>
+									<li class="{{ (!Request::segment(2)) ? 'active' : '' }}">
 										<a href="{{ route('produk.index_produk') }}">All Category</a>
 										<hr>
 									</li>
 									@foreach($all_kategori as $kategori)
-									<li>
+									<li class="{{ (Request::segment(2) == $kategori->slug) ? 'active' : '' }}">
 										<a href="{{ route('produk.index_produk_kategori', $kategori->slug) }}">{{ $kategori->nama_kategori }}</a>
 									</li>
 									@endforeach
