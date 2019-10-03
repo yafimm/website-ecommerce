@@ -146,6 +146,7 @@ class TransaksiController extends Controller
                   $input['ongkir'] = $this->get_ongkir_by_id($id_kota);
                   $input['subtotal'] = integer_format(Cart::getTotal()); // bawaan dari cartnya string, jadi harus dirubah integer
                   $input['kota'] = $alamat['kota'];
+                  $input['note'] = $request['note'];
                   $input['no_telp'] = $input['no_telp'];
                   $input['provinsi'] = $alamat['provinsi'];
                   $input['kodepos'] = $alamat['kodepos'];

@@ -52,6 +52,9 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        if(\Auth::user()->isAdmin()){
+          return redirect()->route('admin.dashboard');
+        }
         if($request->session()->exists('link'))
         {
             return redirect($request->session()->pull('link'));

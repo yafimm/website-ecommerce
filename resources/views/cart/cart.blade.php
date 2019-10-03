@@ -85,6 +85,7 @@
 								<td>
 									@if(!$all_cart->isEmpty())
 									<button class="main_btn" type="submit" href="{{ route('cart.update') }}">Update Cart</button>
+									<small class="form-text text-info">*Update cart if there are additions</small>
 									@endif
 								</td>
 							</tr>

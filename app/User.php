@@ -17,9 +17,9 @@ class User extends Authenticatable
     protected $fillable = [
         'nama', 'email' ,'deskripsi', 'foto','password', 'id_role', 'no_telp', 'no_rekening', 'gender', 'username'
     ];
-    
+
     public function isAdmin(){
-      if($this->id_role === 1){
+      if($this->id_role === 2){
            return true;
        }
        else{

@@ -24,6 +24,7 @@ class CreateTransaksiTable extends Migration
             $table->string('no_telp');
             $table->string('kodepos');
             $table->string('alamat');
+            $table->string('note');
             $table->integer('ongkir');
             $table->integer('subtotal');
             $table->timestamps();

@@ -64,7 +64,7 @@
     <script src="{{ asset('vendor/slick/slick.min.js') }}">
     </script>
     <script src="{{ asset('vendor/wow/wow.min.js') }}"></script>
-    <script src="{{ assetvendor/animsition/animsition.min.js }}"></script>
+    <script src="{{ asset('vendor/animsition/animsition.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-progressbar/bootstrap-progressbar.min.js') }}">
     </script>
     <script src="{{ asset('vendor/counter-up/jquery.waypoints.min.js') }}"></script>

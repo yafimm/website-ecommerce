@@ -55,6 +55,13 @@
 									<textarea class="form-control" placeholder="Building names, Street names, Etc ..." name="alamat_detail" required></textarea>
 									<small class="form-text text-info">*This package will be sent using JNE services</small>
 								</div>
+								<div class="col-md-12 form-group">
+									<div class="creat_account">
+										<h3>Note</h3>
+									</div>
+									<textarea class="form-control" placeholder="write note for the seller" name="note" required></textarea>
+									<small class="form-text text-info">*This note is used to give a message when shipping goods</small>
+								</div>
 						</div>
 						<div class="col-lg-4">
 							<div class="order_box">
