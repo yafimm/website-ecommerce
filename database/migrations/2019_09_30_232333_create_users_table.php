@@ -45,6 +45,23 @@ class CreateUsersTable extends Migration
                ->onDelete('cascade')
                ->onUpdate('cascade');
           });
+
+         Schema::table('konfirmasi', function (Blueprint $table){
+            $table->foreign('id_user')
+               ->references('id')
+               ->on('users')
+               ->onDelete('cascade')
+               ->onUpdate('cascade');
+          });
+
+        Schema::table('konfirmasi', function (Blueprint $table){
+           $table->foreign('id_admin')
+              ->references('id')
+              ->on('users')
+              ->onDelete('cascade')
+              ->onUpdate('cascade');
+         });
+
     }
 
     /**

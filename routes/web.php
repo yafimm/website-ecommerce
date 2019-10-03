@@ -13,10 +13,10 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/about', 'HomeController@about')->name('about');
-Route::get('/contact', 'HomeController@contact')->name('contact');
-Route::group(['middleware' => ['web']], function(){
+  Route::get('/', 'HomeController@index')->name('home');
+  Route::get('/about', 'HomeController@about')->name('about');
+  Route::get('/contact', 'HomeController@contact')->name('contact');
+  Route::group(['middleware' => ['web']], function(){
   Route::post('/shipping', 'CartController@cekOngkos')->name('cart.ongkir');
   Route::get('/cart', 'CartController@index')->name('cart.index');
   Route::post('/cart/add', 'CartController@add')->name('cart.store');

@@ -65,6 +65,11 @@ return [
             'root' => storage_path('images/profile'),
         ],
 
+        'bukti' => [
+            'driver' => 'local',
+            'root' => storage_path('images/bukti'),
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
