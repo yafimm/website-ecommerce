@@ -9,22 +9,32 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
-                            <a href="chart.html">
+                            <a href="{{ route('admin.dashboard') }}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard
                             </a>
                         </li>
+                        <li>
+                              <a href="{{ url('') }}">
+                                  <i class="fas fa-tachometer-alt"></i>Go to website
+                              </a>
+                          </li>
                         <li class="">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="{{ route('transaksi.index') }}">
+                                <i class="fas fa-dollar-sign"></i>Transaction
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="js-arrow" href="{{ route('produk.index') }}">
                                 <i class="fas fa-shopping-cart"></i>Product
                             </a>
                         </li>
                         <li class="">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="{{ route('kategori.indexx') }}">
                                 <i class="fab fa-product-hunt"></i>Category
                             </a>
                         </li>
                         <li class="">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="{{ route('konfirmasi.index') }}">
                                 <i class="fas fa-dollar-sign"></i>Confirmation
                             </a>
                         </li>

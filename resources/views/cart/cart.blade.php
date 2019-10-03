@@ -34,6 +34,12 @@
 							</tr>
 						</thead>
 						<tbody>
+							@if($all_cart->isEmpty())
+							<div style="margin: 10px;" class="text-center">
+								<img class="img-fluid" src="{{ asset('img/empty-cart.png') }}">
+								<h3>Your Cart is Empty</h3>
+							</div>
+							@endif
 							<form class="" action="{{ route('cart.update') }}" method="post">
 							@csrf
 							@method('put')
@@ -104,6 +110,7 @@
 
 								</td>
 								<td>
+
 									<div class="checkout_btn_inner">
 										<a class="gray_btn" href="{{ route('produk.index_produk') }}">Continue Shopping</a>
 									@if(!$all_cart->isEmpty())
@@ -115,10 +122,7 @@
 						 </form>
 						</tbody>
 					</table>
-					<div style="margin: 10px;" class="text-center">
-						<img style="width: 320px;" src="{{ asset('img/empty-cart.png') }}">
-						<h3>Your Cart is Empty</h3>
-					</div>
+
 				</div>
 			</div>
 		</div>

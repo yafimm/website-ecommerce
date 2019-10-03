@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Konfirmasi extends Model
 {
-  protected $table = 'users';
+  protected $table = 'konfirmasi';
 
   protected $rememberToken = false;
 

@@ -89,7 +89,8 @@ class TransaksiController extends Controller
     //Fungsi untuk menampilkan data transaksi user yang dilihat oleh admin
     public function index()
     {
-          $all_transaksi = Transaksi::whereIn('status', ['Belum dibayar', 'Sedang Dikirim'])->orderBy('status', 'asc')->simplePaginate(20);
+          $all_transaksi = Transaksi::whereIn('status', ['Unpaid', 'Is being sent', 'Done'])->orderBy('status', 'asc')->simplePaginate(20);
+          dd($all_transaksi);
           return view('transaksi.index', compact('all_transaksi'));
     }
 

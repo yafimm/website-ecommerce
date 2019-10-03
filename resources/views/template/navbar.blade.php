@@ -31,7 +31,7 @@
 												<a class="nav-link" href="{{ route('transaksi.create') }}">Product Checkout</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="confirmation.html">Confirmation</a>
+												<a class="nav-link" href="{{ route('konfirmasi.create') }}">Confirmation</a>
 											</li>
 										</ul>
 									</li>

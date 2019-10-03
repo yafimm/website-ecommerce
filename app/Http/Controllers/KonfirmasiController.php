@@ -14,7 +14,7 @@ class KonfirmasiController extends Controller
         $ext = $foto->getClientOriginalExtension();
         $nama = uniqid('img_');
         if($request->file('bukti')->isValid()){
-            $filename = $nama.$ext;
+            $filename = $nama.'.'.$ext;
             $upload_path = 'images/bukti';
             $request->file('bukti')->move($upload_path, $filename);
             return $filename;
@@ -60,14 +60,16 @@ class KonfirmasiController extends Controller
         {
             $input['bukti'] = $this->uploadGambar($request);
         }
+        $input['id_user'] = \Auth::user()->id;
         $input['status'] = "Open";
+        // dd($input);
         $store = Konfirmasi::create($input);
         if($store)
         {
-            return redirect()->route('index_user')->with('alert-class', 'alert-success')
+            return redirect()->route('konfirmasi.index')->with('alert-class', 'alert-success')
                                                   ->with('flash_message', 'Ticket successfully created');
         }
-        return redirect()->route('index_user')->with('alert-class', 'alert-danger')
+        return redirect()->route('konfirmasi.index')->with('alert-class', 'alert-danger')
                                               ->with('flash_message', 'Ticket failed to create');
 
     }
@@ -87,7 +89,7 @@ class KonfirmasiController extends Controller
         return abort(404);
     }
 
-    public function update(Request $request, $id)
+    public function update($id)
     {
         $konfirmasi = Konfirmasi::find($id);
         if($konfirmasi)

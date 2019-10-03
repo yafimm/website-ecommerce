@@ -33,6 +33,9 @@ Auth::routes();
 
 Route::group(['middleware' => ['web', 'auth']], function(){
     Route::post('/cart/checkout', 'TransaksiController@store')->name('transaksi.store');
+    Route::get('user/ticket', 'KonfirmasiController@index_user')->name('konfirmasi.index');
+    Route::get('/checkout/confirmation', 'KonfirmasiController@create')->name('konfirmasi.create');
+    Route::post('/checkout/confirmation', 'KonfirmasiController@store')->name('konfirmasi.store');
     Route::get('dashboard', 'UsersController@dashboard')->name('user.dashboard');
     Route::get('/profile/password', 'UsersController@edit_password')->name('user.password.edit');
     Route::get('/profile', 'UsersController@edit_profile')->name('user.profile.edit');
@@ -44,6 +47,10 @@ Route::group(['middleware' => ['web', 'auth']], function(){
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web','admin']], function(){
     Route::get('dashboard', 'UsersController@admindashboard')->name('admin.dashboard');
+    Route::get('ticket', 'KonfirmasiController@index')->name('konfirmasi.index');
+    Route::put('ticket/{id}', 'KonfirmasiController@update')->name('konfirmasi.update');
+    Route::get('transaksi', 'TransaksiController@index')->name('transaksi.index');
+    Route::put('transaksi/{id}', 'TransaksiController@update')->name('transaksi.update');
     Route::resource('kategori', 'KategoriController');
     Route::resource('produk', 'ProdukController');
 });

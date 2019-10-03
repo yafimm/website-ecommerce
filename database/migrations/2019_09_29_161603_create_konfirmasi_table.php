@@ -20,7 +20,7 @@ class CreateKonfirmasiTable extends Migration
             $table->string('judul');
             $table->enum('status', ['Closed', 'Open']);
             $table->text('pesan');
-            $table->string('bukti');
+            $table->text('bukti');
             $table->timestamps();
         });
     }
