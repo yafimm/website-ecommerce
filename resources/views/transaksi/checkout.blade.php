@@ -22,6 +22,7 @@
 	<section class="checkout_area section_gap">
 		<div class="container">
 			<div class="billing_details">
+				@include('_partial.flash_message')
 				<form class="row contact_form" action="{{ route('transaksi.store') }}" method="post" novalidate="novalidate">
 					@csrf
 					@method('post')
@@ -30,36 +31,54 @@
 							<h3>Billing Details</h3>
 								<div class="col-md-12 form-group p_star">
 									<input type="text" class="form-control" id="name" name="name" value="{{ (\Auth::check()) ? \Auth::user()->nama : '' }}" placeholder="Full Name" required>
+									@if($errors->has('name'))
+										<small class="form-text text-danger">*{{ $errors->first('name') }}</small>
+									@endif
 								</div>
 								<div class="col-md-12 form-group p_star">
 									<input type="text" class="form-control" id="number" placeholder="Phone Number" name="no_telp" value="{{ (\Auth::check()) ? \Auth::user()->no_telp : '' }}" required>
-								</div>
+									@if($errors->has('no_telp'))
+										<small class="form-text text-danger">*{{ $errors->first('no_telp') }}</small>
+									@endif	</div>
 								<div class="col-md-12 form-group p_star">
 									<select class="col-md-12 form-group p_star" name="city_id" id="city_id">
-											<option>Select City .. </option>
+											<option value='' selected="true" disabled="disabled">Select City .. </option>
 											@foreach($dataOngkir as $data)
-												<option value="{{ $data['city_id'] }}" data-administrative="{{ $data['type']  }}" data-postal="{{ $data['postal_code'] }}" >{{ $data['city_name'] }}</option>
+												<option value="{{ $data['city_id'] }}" data-administrative="{{ $data['type']  }}" data-postal="{{ $data['postal_code'] }}" >{{ $data['city_name'].' ('.$data['type'].')' }}</option>
 											@endforeach
 									</select>
+									@if($errors->has('city_id'))
+										<small class="form-text text-danger">*{{ $errors->first('city_id') }}</small>
+									@endif
 								</div>
 								<div class="col-md-12 form-group p_star">
 									<input type="text" class="form-control" id="wilayah_administratif" placeholder="Administrative area" name="administrative" required readonly>
+									@if($errors->has('administrative'))
+										<small class="form-text text-danger">*{{ $errors->first('administrative') }}</small>
+									@endif
 								</div>
 								<div class="col-md-12 form-group p_star">
 									<input type="text" class="form-control" id="kodepos" placeholder="Postal Code" name="postalcode" required readonly>
-								</div>
+									@if($errors->has('postalcode'))
+										<small class="form-text text-danger">*{{ $errors->first('postalcode') }}</small>
+									@endif	</div>
 								<div class="col-md-12 form-group">
 									<div class="creat_account">
 										<h3>Shipping Details</h3>
 									</div>
 									<textarea class="form-control" placeholder="Building names, Street names, Etc ..." name="alamat_detail" required></textarea>
-									<small class="form-text text-info">*This package will be sent using JNE services</small>
+									@if($errors->has('alamat_detail'))
+										<small class="form-text text-danger">*{{ $errors->first('alamat_detail') }}</small>
+									@endif	<small class="form-text text-info">*This package will be sent using JNE services</small>
 								</div>
 								<div class="col-md-12 form-group">
 									<div class="creat_account">
 										<h3>Note</h3>
 									</div>
 									<textarea class="form-control" placeholder="write note for the seller" name="note" required></textarea>
+									@if($errors->has('note'))
+										<small class="form-text text-danger">*{{ $errors->first('note') }}</small>
+									@endif
 									<small class="form-text text-info">*This note is used to give a message when shipping goods</small>
 								</div>
 						</div>

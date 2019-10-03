@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Steevenz\Rajaongkir;
 use Cart;
+use App\Http\Requests\TransaksiRequest;
 use App\Transaksi;
 use App\User;
 
@@ -128,7 +129,7 @@ class TransaksiController extends Controller
           return view('transaksi.record_transaksi', compact('all_transaksi'));
     }
 
-    public function store(Request $request)
+    public function store(TransaksiRequest $request)
     {
 
           $dataProdukTransaksi = $this->data_detail_transaksi();
@@ -164,7 +165,7 @@ class TransaksiController extends Controller
                 }
                 else
                 {
-                    return redirect()->route('transaksi.create')->with('flash_message', 'Destination not found!!')
+                   return redirect()->route('transaksi.create')->with('flash_message', 'Destination not found!!')
                                           ->with('alert-class', 'alert-danger');
                 }
             }

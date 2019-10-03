@@ -13,7 +13,7 @@ class Transaksi extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'id', 'id_user', 'id_admin' ,'nama', 'status', 'kota', 'provinsi', 'no_telp', 'kodepos', 'alamat', 'ongkir', 'subtotal',
+        'id', 'id_user', 'id_admin' ,'nama', 'status', 'kota', 'provinsi', 'no_telp', 'kodepos', 'alamat', 'ongkir', 'subtotal', 'note'
     ];
 
     public function produk(){

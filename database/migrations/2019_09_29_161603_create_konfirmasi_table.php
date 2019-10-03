@@ -18,6 +18,7 @@ class CreateKonfirmasiTable extends Migration
             $table->integer('id_user')->unsigned();
             $table->integer('id_admin')->unsigned()->nullable();
             $table->string('judul');
+            $table->enum('status', ['Closed', 'Open']);
             $table->text('pesan');
             $table->string('bukti');
             $table->timestamps();

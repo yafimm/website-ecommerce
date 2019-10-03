@@ -77,6 +77,12 @@ class CreateUsersTable extends Migration
         Schema::table('transaksi', function(Blueprint $table){
           $table->dropForeign('transaksi_id_admin_foreign');
         });
+        Schema::table('konfirmasi', function(Blueprint $table){
+          $table->dropForeign('konfirmasi_id_user_foreign');
+        });
+        Schema::table('konfirmasi', function(Blueprint $table){
+          $table->dropForeign('konfirmasi_id_admin_foreign');
+        });
         Schema::dropIfExists('users');
     }
 }

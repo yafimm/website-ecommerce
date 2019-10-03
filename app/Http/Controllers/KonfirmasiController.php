@@ -60,6 +60,7 @@ class KonfirmasiController extends Controller
         {
             $input['bukti'] = $this->uploadGambar($request);
         }
+        $input['status'] = "Open";
         $store = Konfirmasi::create($input);
         if($store)
         {
@@ -91,7 +92,7 @@ class KonfirmasiController extends Controller
         $konfirmasi = Konfirmasi::find($id);
         if($konfirmasi)
         {
-            $update = $konfirmasi->update(['status' => 'Done']);
+            $update = $konfirmasi->update(['status' => 'Closed']);
             if($update)
             {
                 return redirect()->route('konfirmasi.index')->with('alert-class', 'alert-success')
