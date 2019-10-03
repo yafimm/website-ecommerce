@@ -4531,3 +4531,6 @@ h6 {
   text-align: center;
   transform: translate(-50%, -50%);
 }
+.link-active{
+  color: #1641ff !important;
+}

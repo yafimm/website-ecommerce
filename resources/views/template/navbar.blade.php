@@ -25,7 +25,7 @@
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
 										<ul class="dropdown-menu">
 											<li class="nav-item">
-												<a class="nav-link" href="{{ route('kategori.index_user') }}">Shop Category</a>
+												<a class="nav-link" href="{{ route('kategori.index_user') }}">Product Category</a>
 											</li>
 											<li class="nav-item">
 												<a class="nav-link" href="{{ route('transaksi.create') }}">Product Checkout</a>
