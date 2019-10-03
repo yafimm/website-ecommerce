@@ -23,6 +23,11 @@
                                 <i class="fab fa-product-hunt"></i>Category
                             </a>
                         </li>
+                        <li class="">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-dollar-sign"></i>Confirmation
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
