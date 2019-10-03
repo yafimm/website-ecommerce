@@ -25,7 +25,7 @@
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
 										<ul class="dropdown-menu">
 											<li class="nav-item">
-												<a class="nav-link" href="{{ route('kategori.index_user') }}">Shop Category</a>
+												<a class="nav-link" href="{{ route('kategori.index_user') }}">Product Category</a>
 											</li>
 											<li class="nav-item">
 												<a class="nav-link" href="{{ route('transaksi.create') }}">Product Checkout</a>
@@ -44,12 +44,21 @@
 							<div class="col-lg-5">
 								<ul class="nav navbar-nav navbar-right right_nav pull-right">
 
-
-									<hr>
+								<hr>
 
 									<li class="nav-item">
 										<a href="{{ route('cart.index') }}" class="notification icons">
 											<i class="lnr lnr lnr-cart"></i>
+											<span class="badge" id="cart-number">0</span>
+										</a>
+									</li>
+
+
+									<hr>
+
+									<li class="nav-item">
+										<a href="#" class="notification icons">
+											<i class="fa fa-bell" aria-hidden="true"></i>
 											<span class="badge" id="cart-number">0</span>
 										</a>
 									</li>
@@ -82,7 +91,7 @@
 												<a class="nav-link" href="{{ route('transaksi.index_user') }}">My Order</a>
 											</li>
 											<li class="nav-item text-center">
-												<a href="#" class="nav-link logout" style="font-size: 13px; font-weight: bold;" href="{{ route('logout') }}"  onclick="event.preventDefault();
+												<a style="background-color: red;" href="#" class="nav-link logout" style="font-size: 13px; font-weight: bold;" href="{{ route('logout') }}"  onclick="event.preventDefault();
 										document.getElementById('logout-form').submit();">
 												LOGOUT
 												</a>

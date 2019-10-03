@@ -80,7 +80,7 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<input type="submit" name="update" class="btn input-editprofil" value="Update">
+														<input style="width : 100%; font-size: 20px;" type="submit" name="update" class="main_btn" value="Update">
 													</div>
 												</div>
 											</div>

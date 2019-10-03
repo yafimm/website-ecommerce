@@ -26,9 +26,9 @@
 
 						 	@if(Auth::user()->username == $user->username)
 							<div class="text-center">
-								<a href="{{ route('user.profile.edit') }}" class="genric-btn primary radius e-large" style="font-size: 20px !important; margin: 10px;">Change Profile</a>
-								<a href="{{ route('user.password.edit') }}" class="genric-btn primary radius e-large" style="font-size: 20px !important; margin: 10px;">Change Password</a>
-								<a href="#" class="genric-btn primary radius e-large" style="font-size: 20px !important; margin: 10px;">Transaction History</a>
+								<a href="{{ route('user.profile.edit') }}" class="main_btn" style="font-size: 20px !important; margin: 10px;">Change Profile</a>
+								<a href="{{ route('user.password.edit') }}" class="main_btn" style="font-size: 20px !important; margin: 10px;">Change Password</a>
+								<a href="{{ route('transaksi.index_user') }}" class="main_btn" style="font-size: 20px !important; margin: 10px;">My Orders</a>
 							</div>
 
 							@endif

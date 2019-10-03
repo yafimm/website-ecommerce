@@ -3,6 +3,11 @@
 <!--================Category Product Area =================-->
 <section class="cat_product_area section_gap">
 		<div class="container-fluid">
+			<ul class="breadcrumb-1">
+				<li><a href="{{ url('') }}">Home</a></li>
+				<li><a href="{{ route('kategori.index_user') }}">Product Category</a></li>
+				<li><a href="">All Product</a></li>
+			</ul>
 			@include('_partial.flash_message')
 			<div class="row flex-row-reverse">
 				<div class="col-lg-9">
@@ -54,12 +59,12 @@
 							<div class="widgets_inner">
 								<ul class="list">
 									<li class="{{ (!Request::segment(2)) ? 'active' : '' }}">
-										<a href="{{ route('produk.index_produk') }}">All Category</a>
+										<a class="link-active" href="{{ route('produk.index_produk') }}">All Category</a>
 										<hr>
 									</li>
 									@foreach($all_kategori as $kategori)
 									<li class="{{ (Request::segment(2) == $kategori->slug) ? 'active' : '' }}">
-										<a href="{{ route('produk.index_produk_kategori', $kategori->slug) }}">{{ $kategori->nama_kategori }}</a>
+										<a class="link-active" href="{{ route('produk.index_produk_kategori', $kategori->slug) }}">{{ $kategori->nama_kategori }}</a>
 									</li>
 									@endforeach
 								</ul>

@@ -20,6 +20,11 @@
 	<section class="order_details p_120">
 		<div class="container">
 			<h1 class="text-center" style="color: #28d500;">My Orders</h1>
+			<div style="margin: 10px;" class="text-center">
+				<img style="width: 320px;" src="{{ asset('img/empty-cart.png') }}">
+				<h3>You Have Not Ordered</h3>
+				<a class="main_btn" href="{{ route('kategori.index_user') }}">Shop Now</a>
+			</div>
 
 			@foreach($all_transaksi as $transaksi)
 			<div class="order_details_table">

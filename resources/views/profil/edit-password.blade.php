@@ -44,7 +44,7 @@
   														<input type="password" class="form-editprofil" name="new_password_confirmation">
   													</div>
   													<div class="form-group">
-  														<input type="submit" name="update" class="btn input-editprofil" value="Update">
+  														<input style="width : 100%; font-size: 20px;" type="submit" name="update" class="main_btn" value="Update">
   													</div>
   												</div>
   												<div class="col-md-4">
