@@ -82,7 +82,7 @@
 							@if($produk->stok <= 0)
 							<button class="gray_btn" disabled>Out of stock</button>
 							@else
-							<a class="main_btn" href="#">Add to Cart</a>
+							<a class="main_btn" id="add-to-cart" href="#">Add to Cart</a>
 							@endif
 						</div>
 					</div>
