@@ -44,6 +44,17 @@
 							<div class="col-lg-5">
 								<ul class="nav navbar-nav navbar-right right_nav pull-right">
 
+								<hr>
+
+								<li class="nav-item">
+									<a href="#" class="notification icons">
+										<i class="fa fa-bell" aria-hidden="true"></i>
+										<span class="badge" id="cart-number">0</span>
+									</a>
+								</li>
+
+
+								<hr>
 
 									<hr>
 
