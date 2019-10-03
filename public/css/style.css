@@ -4552,7 +4552,7 @@ ul.breadcrumb-1 {
 }
 ul.breadcrumb-1 li {
   display: inline;
-  font-size: 16px;
+  font-size: 14px;
 }
 ul.breadcrumb-1 li+li:before {
   padding: 8px;
