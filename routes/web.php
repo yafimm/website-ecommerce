@@ -15,8 +15,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
-Route::get('/user/{username}', 'UsersController@show')->name('user.show');
-
+Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::group(['middleware' => ['web']], function(){
   Route::post('/shipping', 'CartController@cekOngkos')->name('cart.ongkir');
   Route::get('/cart', 'CartController@index')->name('cart.index');
@@ -38,7 +37,7 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/profile', 'UsersController@edit_profile')->name('user.profile.edit');
     Route::put('/profile', 'UsersController@update_account')->name('user.profile.update');
     Route::put('/profile/password', 'UsersController@update_password')->name('user.password.update');
-
+    Route::get('/user/order', 'TransaksiController@index_user')->name('transaksi.index_user');
 });
 
 

@@ -8,8 +8,12 @@ class Transaksi extends Model
 {
     protected $table = 'transaksi';
 
+    protected $primaryKey = 'id'; // or null
+
+    public $incrementing = false;
+
     protected $fillable = [
-        'id_user', 'id_admin' ,'status', 'kota', 'provinsi', 'no_telp', 'kodepos', 'alamat', 'ongkir', 'subtotal',
+        'id', 'id_user', 'id_admin' ,'nama', 'status', 'kota', 'provinsi', 'no_telp', 'kodepos', 'alamat', 'ongkir', 'subtotal',
     ];
 
     public function produk(){

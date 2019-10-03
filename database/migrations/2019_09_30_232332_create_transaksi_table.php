@@ -14,10 +14,11 @@ class CreateTransaksiTable extends Migration
     public function up()
     {
         Schema::create('transaksi', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id')->unique();
             $table->integer('id_user')->unsigned();
             $table->integer('id_admin')->unsigned()->nullable();
             $table->enum('status',['Done', 'Unpaid', 'Is being sent']);
+            $table->string('nama');
             $table->string('kota');
             $table->string('provinsi');
             $table->string('no_telp');
@@ -27,6 +28,7 @@ class CreateTransaksiTable extends Migration
             $table->integer('subtotal');
             $table->timestamps();
         });
+
         Schema::table('detail_transaksi', function (Blueprint $table){
            $table->foreign('id_transaksi')
               ->references('id')

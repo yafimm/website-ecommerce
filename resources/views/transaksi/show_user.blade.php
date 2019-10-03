@@ -7,9 +7,9 @@
 				<div class="banner_content text-center">
 					<h2>Order Details</h2>
 					<div class="page_link">
-						<a href="index.html">Home</a>
-						<a href="confirmation.html">My Orders</a>
-						<a href="confirmation.html">Order Details</a>
+						<a href="{{ url('') }}">Home</a>
+						<a href="{{ route('transaksi.index_user') }}">My Orders</a>
+						<a href="{{ route('transaksi.index_user', ['id' => $transaksi->id]) }}">Order Details</a>
 					</div>
 				</div>
 			</div>
@@ -20,7 +20,14 @@
 	<!--================Order Details Area =================-->
 	<section class="order_details p_120">
 		<div class="container">
-			<h3 class="title_confirmation">Thank you. Your order has been received.</h3>
+			@include('_partial.flash_message')
+			@if($transaksi->status == 'Done')
+			<h2 class="title_confirmation">Thank you. Your order has been received.</h2>
+			@elseif($transaksi->status == 'Is being sent')
+			<h2 class="title_confirmation text-info">Thank you for shopping at our shop, your order is being shipped.</h2>
+			@else
+			<h2 class="title_confirmation text-danger">Complete payment immediately to complete the transaction !!</h2>
+			@endif
 			<div class="row order_d_inner">
 				<div class="col-lg-8">
 					<div class="details_item">
@@ -30,22 +37,22 @@
 								<ul class="list">
 									<li>
 										<a href="#">
-											<span>Order number</span> : 60235
+											<span>Order ID</span> : 60235
 										</a>
 									</li>
 									<li>
 										<a href="#">
-											<span>Date</span> : Los Angeles
+											<span>Date</span> : {{ $transaksi->created_at->format('d M Y') }}
 										</a>
 									</li>
 									<li>
 										<a href="#">
-											<span>Total</span> : USD 2210
+											<span>Total</span> : Rp. {{ helper_money_format($transaksi->subtotal + $transaksi->ongkir) }}
 										</a>
 									</li>
 									<li>
 										<a href="#">
-											<span>Payment Status</span> : Unpdaid
+											<span>Payment Status</span> : <span class="{{ ($transaksi->status == 'Done') ? 'text-success' : ($transaksi->status == 'Is being sent') ? 'text-info' :'text-danger' }}">{{ $transaksi->status }}</span>
 										</a>
 									</li>
 								</ul>
@@ -54,40 +61,40 @@
 								<ul class="list">
 									<li>
 										<a href="#">
-											<span>Full Name</span> : Dzaki Madhani
+											<span>Full Name</span> : {{ $transaksi->nama }}
 										</a>
 									</li>
 									<li>
 										<a href="#">
-											<span>Phone Number</span> : 081395746530
+											<span>Phone Number</span> : {{ $transaksi->no_telp }}
 										</a>
 									</li>
 								</ul>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
-				
+
 				<div class="col-lg-4">
 					<div class="details_item">
 						<h4>Shipping Address</h4>
 						<ul class="list">
 							<li>
 								<a href="#">
-									<span>Districrt</span> : Dayeuhkolot</a>
+									<span>Province</span> : {{ $transaksi->provinsi }}</a>
 							</li>
 							<li>
 								<a href="#">
-									<span>City</span> : Kab. Bandung</a>
+									<span>City</span> : {{ $transaksi->kota }}</a>
 							</li>
 							<li>
 								<a href="#">
-									<span>Postcode </span> : 36952</a>
+									<span>Postcode </span> : {{ $transaksi->kodepos }}</a>
 							</li>
 							<li>
 								<a href="#">
-									<span>Details</span> : steet name, building name, etc...
+									<span>Details</span> : {{ $transaksi->alamat }}
 								</a>
 							</li>
 						</ul>
@@ -106,26 +113,27 @@
 							</tr>
 						</thead>
 						<tbody>
+							@foreach($transaksi_produk as $produk)
 							<tr>
 								<td>
 									<div class="media">
 										<div class="d-flex">
-											<img class="img-checkout" src="img/product/single-product/cart-1.jpg" alt="">
+											<img class="img-checkout" src="{{ asset('images/produk/'. $produk->gambar1) }}" alt="">
 										</div>
 										<div class="media-body">
-											<p>Minimalistic shop for multipurpose use</p>
+											<p>{{ $produk->nama }}</p>
 										</div>
 									</div>
 								</td>
 								<td>
-									<h5>x 02</h5>
+									<h5>x {{ $produk->pivot->jumlah }}</h5>
 								</td>
 								<td>
-									<p>$1000.00</p>
+									<p>Rp. {{ helper_money_format($produk->harga) }}</p>
 								</td>
-								
 							</tr>
-							
+							@endforeach
+
 							<tr>
 								<td>
 									<h4>Subtotal</h4>
@@ -134,7 +142,7 @@
 									<h5></h5>
 								</td>
 								<td>
-									<p>$2000.00</p>
+									<p>Rp. {{ helper_money_format($transaksi->subtotal) }}</p>
 								</td>
 							</tr>
 							<tr>
@@ -145,7 +153,7 @@
 									<h5></h5>
 								</td>
 								<td>
-									<p>Flat rate: $50.00</p>
+									<p>Rp. {{ helper_money_format($transaksi->ongkir) }}</p>
 								</td>
 							</tr>
 							<tr>
@@ -156,7 +164,7 @@
 									<h5></h5>
 								</td>
 								<td>
-									<p>$2050.00</p>
+									<p>Rp. {{ helper_money_format($transaksi->subtotal + $transaksi->ongkir) }}</p>
 								</td>
 							</tr>
 						</tbody>

@@ -77,7 +77,7 @@
 												<a class="nav-link" href="{{ route('user.password.edit') }}">Change Password</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link" href="cart.html">Transaction</a>
+												<a class="nav-link" href="{{ route('transaksi.index_user') }}">My Order</a>
 											</li>
 											<li class="nav-item text-center">
 												<a href="#" class="nav-link logout" style="font-size: 13px; font-weight: bold;" href="{{ route('logout') }}"  onclick="event.preventDefault();

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Steevenz\Rajaongkir;
 use Cart;
 use App\Transaksi;
+use App\User;
 
 class TransaksiController extends Controller
 {
@@ -16,9 +17,16 @@ class TransaksiController extends Controller
 
     protected function detailTransaksi($user, $id)
     {
-          $transaksi_produk  = Transaksi::find($id)->produk;
-          $transaksi = $user->transaksi->find($id);
-          return view('transaksi.detailuser', compact('transaksi', 'transaksi_produk'));
+          $transaksi = Transaksi::find($id);
+          if($transaksi)
+          {
+              $transaksi_produk = $transaksi->produk;
+              $transaksi = $user->transaksi->find($id);
+              if($transaksi){
+                  return view('transaksi.show_user', compact('transaksi', 'transaksi_produk'));
+              }
+          }
+          return abort(404);
     }
 
     private function set_alamat_tujuan($id, $alamat_detail){
@@ -52,7 +60,7 @@ class TransaksiController extends Controller
            $harga = $jumlah = $id_produk = $dataProdukTransaksi = array();
            $all_data = Cart::getContent(); // ngambil semua data cart dari class Cart
 
-          if($all_data != null){
+          if($all_data > 0){
               foreach ($all_data as $key => $data) {
                 array_push($id_produk, $data->id);
                 array_push($harga, $data->price);
@@ -97,15 +105,21 @@ class TransaksiController extends Controller
     //Fungsi untuk menampilkan data transaksi user
     public function index_user(Request $request)
     {
-          $user = Users::find(\Auth::guard('users')->user()->username);
-          $all_transaksi = Users::find(\Auth::guard('users')->user()->username)->transaksi()->orderBy('status', 'desc')->simplePaginate(10);
+          $all_transaksi = User::find(\Auth::user()->id)->transaksi()->orderBy('status', 'desc')->Paginate(6);
 
           // if yang ini untuk menampilkan detailnya
-          if(isset($request->id)){
-                return $this->detailTransaksi($user, $request->id);
-          }else{
-                return view('transaksi.indexuser', compact('all_transaksi'));
+          if($all_transaksi && \Auth::check())
+          {
+            if(isset($request->id))
+            {
+                  return $this->detailTransaksi(\Auth::user(), $request->id);
+            }
+            else
+            {
+                  return view('transaksi.index_user', compact('all_transaksi'));
+            }
           }
+          return abort(404);
     }
 
     public function record_transaksi()
@@ -128,6 +142,7 @@ class TransaksiController extends Controller
                   $input['id'] = setIdTransaksi();
                   $input['id_user'] = \Auth::user()->id;
                   $input['status'] = 'Unpaid';
+                  $input['nama'] = $request->name;
                   $input['ongkir'] = $this->get_ongkir_by_id($id_kota);
                   $input['subtotal'] = integer_format(Cart::getTotal()); // bawaan dari cartnya string, jadi harus dirubah integer
                   $input['kota'] = $alamat['kota'];
@@ -143,7 +158,7 @@ class TransaksiController extends Controller
                       $transaksi->produk()->attach($dataProdukTransaksi['id_produk'][$key], $dataProdukTransaksi['detail'][$key]);
                   }
                   Cart::clear();
-                  return redirect('')->with('flash_message', 'Transaction successfully made, pay immediately to complete the transaction process')
+                  return redirect()->route('transaksi.index_user', ['id' => $input['id']])->with('flash_message', 'Transaction successfully made, pay immediately to complete the transaction process')
                                                                           ->with('alert-class', 'alert-success');
                 }
                 else
@@ -152,7 +167,7 @@ class TransaksiController extends Controller
                                           ->with('alert-class', 'alert-danger');
                 }
             }
-              else
+            else
             {
                 return redirect()->route('transaksi.create')->with('flash_message', 'Your cart is empty, look for your favorite product and add it to the cart')
                                        ->with('alert-class', 'alert-danger');
@@ -172,10 +187,10 @@ class TransaksiController extends Controller
           $id = $request->id;
           $newStatus = $request->newStatus;
 
-          if($newStatus == 'Sudah dibayar'){
-                $newStatus = 'Sedang dikirim';
-          }else if($newStatus){
-                $newStatus = 'Transaksi Selesai';
+          if($newStatus == 'Unpaid'){
+                $newStatus = 'Is being sent';
+          }else if($newStatus == 'Is being sent'){
+                $newStatus = 'Done';
           }
 
           $Transaksi = Transaksi::find($id);
