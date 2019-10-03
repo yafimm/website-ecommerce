@@ -15,7 +15,7 @@ class KategoriTableSeeder extends Seeder
         $kategori = new Kategori;
         $kategori->nama_kategori = "Samsung";
         $kategori->slug = Str::slug($kategori->nama_kategori);
-        $kategori->logo = "logosamsumg.png";
+        $kategori->logo = "logosamsung.png";
         $kategori->save();
 
         $kategori = new Kategori;
@@ -51,7 +51,7 @@ class KategoriTableSeeder extends Seeder
         $kategori = new Kategori;
         $kategori->nama_kategori = "Sony";
         $kategori->slug = Str::slug($kategori->nama_kategori);
-        $kategori->logo = "logosamsung.png";
+        $kategori->logo = "logosony.png";
         $kategori->save();
 
         $kategori = new Kategori;
