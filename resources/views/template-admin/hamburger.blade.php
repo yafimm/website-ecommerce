@@ -4,7 +4,7 @@
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
+                            <img src="{{ asset('images/icon/logo.png') }}" alt="CoolAdmin" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -22,24 +22,15 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             </a>
                         </li>
-                        <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
-                        </li>
-                        <li class="has-sub">
+                        <li class="">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
-                            </ul>
+                                <i class="fas fa-shopping-cart"></i>Product
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="js-arrow" href="#">
+                                <i class="fab fa-product-hunt"></i>Category
+                            </a>
                         </li>
                     </ul>
                 </div>
