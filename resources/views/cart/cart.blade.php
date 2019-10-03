@@ -115,6 +115,10 @@
 						 </form>
 						</tbody>
 					</table>
+					<div class="text-center">
+						<img style="width: 320px;" src="img/empty-cart.png">
+						<h3>Your Cart is Empty</h3>
+					</div>
 				</div>
 			</div>
 		</div>
