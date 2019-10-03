@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 use App\Produk;
 use App\Kategori;
+use App\Http\Requests\ProdukRequest;
 
 class ProdukController extends Controller
 {
@@ -12,13 +14,13 @@ class ProdukController extends Controller
 
     private function uploadGambar(Request $request)
     {
-        $foto = $request->file('foto_produk');
+        $foto = $request->file('gambar1');
         $ext = $foto->getClientOriginalExtension();
-        $nama = Str::slug($request->nama, '-');;
-        if($request->file('foto_produk')->isValid()){
-            $filename = $nama.$ext;
+        $nama = Str::slug($request->nama, '-');
+        if($request->file('gambar1')->isValid()){
+            $filename = $nama.'.'.$ext;
             $upload_path = 'images/produk';
-            $request->file('foto_produk')->move($upload_path, $filename);
+            $request->file('gambar1')->move($upload_path, $filename);
             return $filename;
         }
         return false;
@@ -36,8 +38,8 @@ class ProdukController extends Controller
 
     public function index()
     {
-        $all_produk = Produk::simplePaginate(20);
-        return view('produk.index');
+        $all_produk = Produk::orderBy('created_at', 'desc')->simplePaginate(12);
+        return view('produk.index', compact('all_produk'));
     }
 
     public function index_produk()
@@ -62,25 +64,27 @@ class ProdukController extends Controller
     public function create()
     {
         $produk = new Produk;
-        return view('produk.create', compact('produk'));
+        $all_kategori = Kategori::all();
+        return view('produk.create', compact('produk', 'all_kategori'));
     }
 
     public function store(Request $request)
     {
         $input = $request->all();
-        $input['slug']= Str::slug($request->nama, "-");
+        $input['slug'] = Str::slug($request->nama, '-');
 
         if($request->hasFile('gambar1')){
-          $input['gambar1'] = $this->uploadFoto($request);
+          $input['gambar1'] = $this->uploadGambar($request);
         }
-
+        //
+        // dd($input);
         $create = Produk::create($input);
         if($create)
         {
-            return redirect()->name('produk.index')->with('alert-class', 'alert-success')
+            return redirect()->route('produk.index')->with('alert-class', 'alert-success')
                         ->with('flash_message', 'Data produk berhasil diinput');
         }
-        return redirect()->name('produk.index')->with('alert-class', 'alert-danger')
+        return redirect()->route('produk.index')->with('alert-class', 'alert-danger')
                     ->with('flash_message', 'Data produk gagal diinput');
     }
 
@@ -100,26 +104,28 @@ class ProdukController extends Controller
 
     public function edit(Produk $produk)
     {
-        return view('produk.edit', compact('produk'));
+        $all_kategori = Kategori::all();
+        return view('produk.edit', compact('produk', 'all_kategori'));
     }
 
-    public function update(Request $request, Produk $produk)
+    public function update(ProdukRequest $request, Produk $produk)
     {
         $input = $request->all();
 
         // kalo ada perubahan gambar,  gambar lama dihapus
-        if(isset($input['gambar1'])){
+        if($request->hasFile('gambar1')){
           $this->hapusFoto($produk);
-          $input['gambar1'] = $this->uploadFoto($request);
+          $input['gambar1'] = $this->uploadGambar($request);
         }
+
 
         $update = $produk->update($input);
         if($update)
         {
-            return redirect()->name('produk.index')->with('alert-class', 'alert-success')
+            return redirect()->route('produk.index')->with('alert-class', 'alert-success')
                         ->with('flash_message', 'Data produk berhasil diubah');
         }
-        return redirect()->name('kategori.index')->with('alert-class', 'alert-danger')
+        return redirect()->route('kategori.index')->with('alert-class', 'alert-danger')
                     ->with('flash_message', 'Data produk gagal diubah');
     }
 
@@ -128,10 +134,10 @@ class ProdukController extends Controller
         $delete = $produk->delete();
         if($delete)
         {
-            return redirect()->name('produk.index')->with('alert-class', 'alert-success')
+            return redirect()->route('produk.index')->with('alert-class', 'alert-success')
                         ->with('flash_message', 'Data produk berhasil dihapus');
         }
-        return redirect()->name('kategori.index')->with('alert-class', 'alert-danger')
+        return redirect()->route('kategori.index')->with('alert-class', 'alert-danger')
                     ->with('flash_message', 'Data produk gagal dihapus');
     }
 

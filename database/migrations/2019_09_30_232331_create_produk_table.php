@@ -19,12 +19,12 @@ class CreateProdukTable extends Migration
             $table->string('nama');
             $table->string('slug');
             $table->integer('stok');
-            $table->string('note')->nullable();
             $table->integer('harga');
-            $table->string('gambar1')->nullable();
-            $table->string('gambar2')->nullable();
-            $table->string('gambar3')->nullable();
-            $table->string('gambar4')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->text('gambar1')->nullable();
+            $table->text('gambar2')->nullable();
+            $table->text('gambar3')->nullable();
+            $table->text('gambar4')->nullable();
             $table->timestamps();
         });
 

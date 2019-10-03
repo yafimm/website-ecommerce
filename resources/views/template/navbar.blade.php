@@ -36,7 +36,7 @@
 										</ul>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link {{ (isset($halaman) && $halaman == 'contact') ? 'active' : ''}}" href="contact.html">Contact</a>
+										<a class="nav-link {{ (isset($halaman) && $halaman == 'contact') ? 'active' : ''}}" href="{{ route('contact') }}">Contact</a>
 									</li>
 								</ul>
 							</div>
@@ -64,6 +64,11 @@
 											{{ Auth::user()->username }}
 										</a>
 										<ul class="dropdown-menu">
+											@if(Auth::user()->isAdmin())
+											<li class="nav-item">
+												<a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+											</li>
+											@endif
 											<li class="nav-item">
 												<a class="nav-link" href="{{ route('user.show', \Auth::user()->username) }}">Profile</a>
 											</li>

@@ -75,6 +75,7 @@
     <script src="{{ asset('vendor/chartjs/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('vendor/select2/select2.min.js') }}">
     </script>
+    <script src="{{ asset('js/imageReader.js') }}"></script>
 
     <!-- Main JS-->
     <script src="{{ asset('js/main.js') }}"></script>

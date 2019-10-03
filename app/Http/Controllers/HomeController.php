@@ -21,4 +21,14 @@ class HomeController extends Controller
         $featured_produk = \App\Produk::orderBy('created_at', 'desc')->orderBy('stok', 'desc')->take(10)->get();
         return view('home', compact('featured_produk'));
     }
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
 }

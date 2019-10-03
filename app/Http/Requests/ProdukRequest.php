@@ -23,13 +23,14 @@ class ProdukRequest extends FormRequest
      */
     public function rules()
     {
-      if($this->method == 'POST'){
-        $nama => 'required|string|max:30|unique:produk',
-        $gambar1 => 'required|image|max:1024|mimes:jpeg,jpg,bmp,png'
+      if($this->method() == 'POST'){
+        $nama = 'required|string|min:5|max:50|unique:produk';
+        $gambar1 = 'required|image|max:2000|mimes:jpeg,jpg,bmp,png';
       }else{
-        $nama => 'required|string|max:30|unique:produk, nama,'.$this->get('id'),
-        $gambar1 => 'sometimes|image|max:1024|mimes:jpeg,jpg,bmp,png'
+        $nama = 'required|string|min:5|max:50|unique:produk,nama,'.$this->get('id');
+        $gambar1 = 'sometimes|image|max:1024|mimes:jpeg,jpg,bmp,png';
       }
+
       return [
         'nama' => $nama,
         'gambar1' => $gambar1,
