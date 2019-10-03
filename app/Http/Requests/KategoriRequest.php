@@ -24,15 +24,15 @@ class KategoriRequest extends FormRequest
     public function rules()
     {
       if($this->method == 'POST'){
-        $nama_kategori => 'required|string|max:50|min:3|unique:kategori',
-        $logo => 'required|image|max:1024|mimes:jpeg,jpg,bmp,png',
+        $nama_kategori = 'required|string|max:50|min:3|unique:kategori';
+        $logo = 'required|image|max:1024|mimes:jpeg,jpg,bmp,png';
       }else{
-        $nama_kategori => 'required|string|min:5|max:50|unique:kategori, nama_kategori,'.$this->user()->id,
-        $logo => 'sometimes|image|max:1024|mimes:jpeg,jpg,bmp,png',
+        $nama_kategori = 'required|string|min:5|max:50|unique:kategori,nama_kategori,'.$this->get('id');
+        $logo = 'sometimes|image|max:1024|mimes:jpeg,jpg,bmp,png';
       }
       return [
         'logo' => $logo,
-        'nama_kategori' => $nama_kategori,
+        'name' => $nama_kategori,
       ];
     }
 }
