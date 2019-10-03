@@ -46,21 +46,19 @@
 
 								<hr>
 
-								<li class="nav-item">
-									<a href="#" class="notification icons">
-										<i class="fa fa-bell" aria-hidden="true"></i>
-										<span class="badge" id="cart-number">0</span>
-									</a>
-								</li>
+									<li class="nav-item">
+										<a href="{{ route('cart.index') }}" class="notification icons">
+											<i class="lnr lnr lnr-cart"></i>
+											<span class="badge" id="cart-number">0</span>
+										</a>
+									</li>
 
-
-								<hr>
 
 									<hr>
 
 									<li class="nav-item">
-										<a href="{{ route('cart.index') }}" class="notification icons">
-											<i class="lnr lnr lnr-cart"></i>
+										<a href="#" class="notification icons">
+											<i class="fa fa-bell" aria-hidden="true"></i>
 											<span class="badge" id="cart-number">0</span>
 										</a>
 									</li>
@@ -88,7 +86,7 @@
 												<a class="nav-link" href="{{ route('transaksi.index_user') }}">My Order</a>
 											</li>
 											<li class="nav-item text-center">
-												<a href="#" class="nav-link logout" style="font-size: 13px; font-weight: bold;" href="{{ route('logout') }}"  onclick="event.preventDefault();
+												<a style="background-color: red;" href="#" class="nav-link logout" style="font-size: 13px; font-weight: bold;" href="{{ route('logout') }}"  onclick="event.preventDefault();
 										document.getElementById('logout-form').submit();">
 												LOGOUT
 												</a>
