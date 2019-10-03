@@ -38,9 +38,6 @@
 									<li class="nav-item">
 										<a class="nav-link {{ (isset($halaman) && $halaman == 'contact') ? 'active' : ''}}" href="contact.html">Contact</a>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link {{ (isset($halaman) && $halaman == 'about') ? 'active' : ''}}" href="contact.html">About Us</a>
-									</li>
 								</ul>
 							</div>
 
