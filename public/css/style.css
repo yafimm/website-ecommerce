@@ -4546,3 +4546,24 @@ h6 {
 .img-category:hover{
   opacity: 1;
 }
+ul.breadcrumb-1 {
+  padding: 10px 16px;
+  list-style: none;
+}
+ul.breadcrumb-1 li {
+  display: inline;
+  font-size: 16px;
+}
+ul.breadcrumb-1 li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+ul.breadcrumb-1 li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+ul.breadcrumb-1 li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}

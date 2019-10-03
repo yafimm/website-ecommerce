@@ -3,6 +3,10 @@
 <!--================Category Product Area =================-->
 <section class="section_gap">
 		<div class="container">
+    <ul class="breadcrumb-1">
+      <li><a href="{{ url('') }}">Home</a></li>
+      <li><a href="{{ route('kategori.index_user') }}">Product Category</a></li>
+    </ul>
       <div class="row">
         @foreach($all_kategori as $kategori)
         <div class="col-md-3 col-sm-4 col-6" style="margin-bottom: 10px;">
