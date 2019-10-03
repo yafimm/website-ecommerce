@@ -117,6 +117,16 @@
 										</a>
 									</li>
 								</ul>
+								<div class="payment_item">
+									<h3 class="text-center" style="margin-top: 30px;">Payments Method</h3>
+									<p>please make a payment by transfer, then upload your transfer receipt to the <a href="#">CONFIRMATION</a>  page</p>
+								</div>
+								<div class="payment_item active">
+									<center>
+										<img class="text-center" style="width: 100px;" src="{{ asset('img/bri') }}.png" alt="">
+									</center>
+									<p>account number account number in the name <strong> Agus Suparman : 5345546465</strong></p>
+								</div>
 								@if(Auth::check())
 									<input style="width: 100%;" type="submit" name="submit" class="main_btn" value="PROCEED ORDER">
 								@else
