@@ -76,20 +76,23 @@ class CartController extends Controller
     {
         Cart::clear();
         return redirect()->back();
-  }
+    }
 
     public function update(Request $request)
     {
         $quantity = $request->quantity;
         $rowId = $request->rowId;
-        for ($i=0; $i<count($rowId); $i++) {
-            $update = Cart::update($rowId[$i], array('quantity' => array(
-                                                  'relative' => false,
-                                                  'value' => $quantity[$i]
-                                              )));
-        }
-        if($update){
-          return redirect()->route('cart.index')->with('alert-class', 'alert-success')->with('flash_message', 'Cart updated successfully');
+        if(Cart::getTotalQuantity() > 0)
+        {
+          for ($i=0; $i<count($rowId); $i++) {
+              $update = Cart::update($rowId[$i], array('quantity' => array(
+                                                    'relative' => false,
+                                                    'value' => $quantity[$i]
+                                                )));
+          }
+          if($update){
+              return redirect()->route('cart.index')->with('alert-class', 'alert-success')->with('flash_message', 'Cart updated successfully');
+          }
         }
         return redirect()->route('cart.index')->with('alert-class', 'alert-danger')->with('flash_message', 'Cart failed to updated');
     }

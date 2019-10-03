@@ -84,7 +84,7 @@ function totalAll(){
         success: function(response)
         {
           Swal.fire(response, "is added to cart !", "success");
-          // loadCart();
+          totalCountCart();
         },
         error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
              console.log(JSON.stringify(jqXHR));
