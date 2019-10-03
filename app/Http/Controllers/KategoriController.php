@@ -13,6 +13,12 @@ class KategoriController extends Controller
         // $this->middleware('auth');
     }
 
+    public function index_user()
+    {
+        $all_kategori = Kategori::all();
+        return view('kategori.index_user', compact('all_kategori'));
+    }
+
     public function index()
     {
         $all_kategori = Kategori::simplePaginate(15);

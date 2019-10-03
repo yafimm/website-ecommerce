@@ -24,6 +24,7 @@ Route::group(['middleware' => ['web']], function(){
   Route::put('/cart', 'CartController@update')->name('cart.update');
   Route::get('/cart/basket', 'CartController@basket')->name('cart.basket');
   Route::get('/cart/checkout', 'TransaksiController@create')->name('transaksi.create');
+  Route::geT('/category', 'KategoriController@index_user')->name('kategori.index_user');
   Route::get('/shop', 'ProdukController@index_produk')->name('produk.index_produk');
   Route::get('/shop/{slug}', 'ProdukController@produk_kategori')->name('produk.index_produk_kategori');
   Route::get('/p/{slug}', 'ProdukController@show_produk')->name('produk.show_produk');

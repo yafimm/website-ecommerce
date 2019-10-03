@@ -60,7 +60,7 @@ class TransaksiController extends Controller
            $harga = $jumlah = $id_produk = $dataProdukTransaksi = array();
            $all_data = Cart::getContent(); // ngambil semua data cart dari class Cart
 
-          if($all_data > 0){
+          if($all_data->count() > 0){
               foreach ($all_data as $key => $data) {
                 array_push($id_produk, $data->id);
                 array_push($harga, $data->price);

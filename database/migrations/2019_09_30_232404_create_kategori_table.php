@@ -17,6 +17,7 @@ class CreateKategoriTable extends Migration
             $table->increments('id');
             $table->string('nama_kategori');
             $table->string('slug');
+            $table->string('logo');
         });
 
         Schema::table('produk', function (Blueprint $table) {
