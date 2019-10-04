@@ -51,6 +51,7 @@
             </div>
             <!-- END MAIN CONTENT-->
             <!-- END PAGE CONTAINER-->
+            @include('template-admin.modal')
         </div>
 
     </div>

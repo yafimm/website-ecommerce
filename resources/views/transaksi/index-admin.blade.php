@@ -18,7 +18,11 @@
                                             <tr class="tr-shadow">
                                                 <td style="vertical-align: middle; font-size: 16px;">1</td>
                                                 <td style="color: black;  font-size: 16px;">Lori Lynch</td>
-                                                <td class="text-center"><img style="width: 250px; height: auto; max-height: 500px;" src="images/proof.jpg"></td>
+                                                <td class="text-center">
+                                                    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
+                                                        View Receipt of Transfer
+                                                    </button>
+                                                </td>
                                                 <td>
                                                     <div class="table-data-feature">
                                                         <button style="width: 50px; height: 50px;" class="item" data-toggle="tooltip" data-placement="top" title="Confirm">
@@ -28,7 +32,23 @@
                                                 </td>
                                             </tr>
                                             <tr class="spacer"></tr>
-                                            
+                                            <tr class="tr-shadow">
+                                                <td style="vertical-align: middle; font-size: 16px;">1</td>
+                                                <td style="color: black;  font-size: 16px;">Lori Lynch</td>
+                                                <td class="text-center">
+                                                    <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
+                                                        View Receipt of Transfer
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button style="width: 50px; height: 50px;" class="item" data-toggle="tooltip" data-placement="top" title="Confirm">
+                                                            <i style="font-size: 26px; color: black;" class="zmdi zmdi-check"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="spacer"></tr>
                                         </tbody>
                                     </table>
                                 </div>
