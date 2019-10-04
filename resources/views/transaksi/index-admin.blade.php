@@ -18,6 +18,7 @@
                                             <tr class="tr-shadow">
                                                 <td style="vertical-align: middle; font-size: 16px;">1</td>
                                                 <td style="color: black;  font-size: 16px;">Lori Lynch</td>
+                                                <td style="color: black;  font-size: 16px;">Rp. 1.040.000,00</td>
                                                 <td class="text-center">
                                                     <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
                                                         View Receipt of Transfer
@@ -35,6 +36,7 @@
                                             <tr class="tr-shadow">
                                                 <td style="vertical-align: middle; font-size: 16px;">1</td>
                                                 <td style="color: black;  font-size: 16px;">Lori Lynch</td>
+                                                <td style="color: black;  font-size: 16px;">Rp. 1.040.000,00</td>
                                                 <td class="text-center">
                                                     <button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
                                                         View Receipt of Transfer
