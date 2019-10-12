@@ -27,15 +27,19 @@
                                               <td class="text-center">{{ $konfirmasi->created_at->format('d M Y H:m') }}</td>
                                               <td class="text-center">{{ $konfirmasi->status }}</td>
                                               <td>
-                                                  <div class="table-data-feature">
-                                                      <a href="#" class="item" onclick="event.preventDefault();
-                                                      document.getElementById('konfirmasi-update-{{ $konfirmasi->id }}').submit();"><i style="font-size: 26px; color: black;" class="zmdi zmdi-check"></i></a>
-
-                                                      <form class="" id="konfirmasi-update-{{ $konfirmasi->id }}" action="{{ route('konfirmasi.update', $konfirmasi->id)}}" method="post">
-                                                          @method('PUT')
-                                                          @CSRF
-                                                      </form>
-                                                  </div>
+                                                  @if($konfirmasi->status === 'Open')
+                                                    <div class="table-data-feature">
+                                                            <a href="#" class="item" data-toggle="tooltip" data-placement="top" onclick="event.preventDefault();
+                                                            document.getElementById('konfirmasi-update-{{ $konfirmasi->id }}').submit();">
+                                                                <i class="zmdi zmdi-check"></i>
+                                                            </a>
+                                
+                                                            <form class="" id="konfirmasi-update-{{ $konfirmasi->id }}" action="{{ route('konfirmasi.update', $konfirmasi->id) }}" method="post">
+                                                                @method('put')
+                                                                @CSRF
+                                                            </form>
+                                                    </div>
+                                                   @endif
                                               </td>
                                           </tr>
                                           <tr class="spacer"></tr>

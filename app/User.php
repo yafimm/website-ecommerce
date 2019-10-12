@@ -19,10 +19,11 @@ class User extends Authenticatable
     ];
 
     public function isAdmin(){
-      if($this->id_role === 2){
+        if($this->id_role == 2){
            return true;
        }
-       else{
+       else
+       {
            return false;
        }
     }

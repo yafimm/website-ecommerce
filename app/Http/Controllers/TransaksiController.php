@@ -8,6 +8,7 @@ use Cart;
 use App\Http\Requests\TransaksiRequest;
 use App\Transaksi;
 use App\User;
+use App\Produk;
 
 class TransaksiController extends Controller
 {
@@ -66,6 +67,13 @@ class TransaksiController extends Controller
                 array_push($id_produk, $data->id);
                 array_push($harga, $data->price);
                 array_push($jumlah, $data->quantity);
+                
+                $produk = Produk::find($data->id);
+                if($produk->stok >= $data->quantity){
+                    $produk->update(['stok' => $produk->stok - $data->quantity]);
+                }else{
+                    return false;
+                }
               }
 
               //Fungsi biar array jadi "nama" => nilai , soalnya data ini digunakan untuk attach ke tabel relasinya
@@ -90,7 +98,6 @@ class TransaksiController extends Controller
     public function index()
     {
           $all_transaksi = Transaksi::whereIn('status', ['Unpaid', 'Is being sent', 'Done'])->orderBy('status', 'asc')->simplePaginate(20);
-          dd($all_transaksi);
           return view('transaksi.index', compact('all_transaksi'));
     }
 
@@ -114,11 +121,11 @@ class TransaksiController extends Controller
           {
             if(isset($request->id))
             {
-                  return $this->detailTransaksi(\Auth::user(), $request->id);
+                return $this->detailTransaksi(\Auth::user(), $request->id);
             }
             else
             {
-                  return view('transaksi.index_user', compact('all_transaksi'));
+                return view('transaksi.index_user', compact('all_transaksi'));
             }
           }
           return abort(404);
@@ -172,7 +179,7 @@ class TransaksiController extends Controller
             }
             else
             {
-                return redirect()->route('transaksi.create')->with('flash_message', 'Your cart is empty, look for your favorite product and add it to the cart')
+                return redirect()->route('transaksi.create')->with('flash_message', 'Your cart is empty or the product is out of stock, look for your favorite product and add it to the cart')
                                        ->with('alert-class', 'alert-danger');
             }
     }
@@ -185,26 +192,26 @@ class TransaksiController extends Controller
           return ['alamat' => $Transaksi->alamat, 'produk' => $Transaksi->produk ];
     }
 
-    public function update_status(Request $request)
+    public function update_status($id)
     {
-          $id = $request->id;
-          $newStatus = $request->newStatus;
-
-          if($newStatus == 'Unpaid'){
-                $newStatus = 'Is being sent';
-          }else if($newStatus == 'Is being sent'){
-                $newStatus = 'Done';
-          }
-
           $Transaksi = Transaksi::find($id);
 
           if($Transaksi){
+              if($Transaksi->status == 'Unpaid'){
+                  $newStatus = 'Is being sent';
+              }else if($Transaksi->status == 'Is being sent'){
+                  $newStatus = 'Done';
+              }else{
+                  return redirect()->route('transaksi.index')->with('alert-class', 'alert-info')->with('flash_message',  $Transaksi->id.' already updated');
+              }
+              
               $Transaksi->status = $newStatus;
-              $Transaksi->admin = \Auth::guard('admin')->user()->username;
+              $Transaksi->id_admin = \Auth::user()->id;
               $Transaksi->save();
-              return ['response'=> 200, 'status' => $newStatus];
+              return redirect()->route('transaksi.index')->with('alert-class', 'alert-success')->with('flash_message',  $Transaksi->id.' has successfully updated');
           }else{
-              return ['response'=> 500, 'status' => $newStatus];
+          return redirect()->route('transaksi.index')->with('alert-class', 'alert-danger')->with('flash_message', '{{ $transaksi->id }} failed to update');
+              
           }
     }
 

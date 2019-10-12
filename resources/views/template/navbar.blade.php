@@ -75,7 +75,7 @@
 										<ul class="dropdown-menu">
 											@if(Auth::user()->isAdmin())
 											<li class="nav-item">
-												<a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+    												<a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
 											</li>
 											@endif
 											<li class="nav-item">

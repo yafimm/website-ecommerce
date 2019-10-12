@@ -19,4 +19,12 @@ class Transaksi extends Model
     public function produk(){
       return $this->belongsToMany('App\Produk', 'detail_transaksi', 'id_transaksi', 'id_produk')->withPivot('harga', 'jumlah')->withTimestamps();
     }
+    
+    public function user(){
+        return $this->belongsTo('App\User', 'id_user');
+    }
+    
+    public function admin(){
+        return $this->belongsTo('App\User', 'id_admin');
+    }
 }

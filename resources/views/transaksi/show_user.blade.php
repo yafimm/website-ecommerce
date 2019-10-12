@@ -29,7 +29,7 @@
 			<h2 style="margin-bottom: 20px;" class="title_confirmation text-danger">Complete payment immediately to complete the transaction !!</h2>
 			<div class="payment_item active" style="margin-bottom: 40px;">
 				<center>
-					<img class="text-center" style="width: 100px; margin-bottom: 10px;" src="img/bri.png" alt="">
+					<img class="text-center" style="width: 100px; margin-bottom: 10px;" src="{{ asset('img/bri.png') }} " alt="">
 					<h5>Please transfer to account number account number in the name <strong> Agus Suparman : 5345546465</strong></h5>
 					<h5 style="margin-bottom: 40px;">to complete your order</h5>
 				</center>

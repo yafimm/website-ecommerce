@@ -22,27 +22,33 @@
                   </tr>
               </thead>
               <tbody>
+                @if(!$all_transaksi->isEmpty())
                 @foreach($all_transaksi as $key => $transaksi)
                 <tr class="tr-shadow">
                     <td>{{ $transaksi->id }}</td>
                     <td>{{ $transaksi->user->username }}</td>
-                    <td>{{ $transaksi->subtotal + $transaksi->ongkir }}</td>
+                    <td>Rp. {{ helper_money_format($transaksi->subtotal + $transaksi->ongkir) }}</td>
                     <td>{{ $transaksi->created_at->format('d M Y') }}</td>
-                    <td>{{ $transaksi->status }}</td>
+                    <td class="{{ ($transaksi->status == 'Unpaid') ? 'text-danger' : 'text-success' }}">{{ $transaksi->status }}</td>
                     <td>
+                       @if($transaksi->status === 'Unpaid' || $transaksi->status === 'Is being sent')
                         <div class="table-data-feature">
-                            <a href="{{ route('transaksi.update', $transaksi->id) }}" class="item" data-toggle="tooltip" data-placement="top"  onclick="event.preventDefault();
-                            document.getElementById('transaksi-update-{{ $transaksi->id }}').submit();"><i style="font-size: 24px;" class="zmdi zmdi-delete"></i></a>
-
-                            <form class="" id="transaksi-transaksi-{{ $transaksi->id }}" action="{{ route('transaksi.update', $transaksi->id) }}" method="post">
-                                @method('put')
-                                @CSRF
-                            </form>
+                                <a href="#" class="item" data-toggle="tooltip" data-placement="top" onclick="event.preventDefault();
+                                document.getElementById('transaksi-update-{{ $transaksi->id }}').submit();">
+                                    <i class="zmdi zmdi-check"></i>
+                                </a>
+    
+                                <form class="" id="transaksi-update-{{ $transaksi->id }}" action="{{ route('transaksi.update', $transaksi->id) }}" method="post">
+                                    @method('put')
+                                    @CSRF
+                                </form>
                         </div>
+                       @endif
                     </td>
                 </tr>
                 <tr class="spacer"></tr>
                 @endforeach
+                @endif
               </tbody>
           </table>
       </div>

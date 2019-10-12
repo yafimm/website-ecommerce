@@ -21,6 +21,9 @@
 	<!-- Latest compiled and minified CSS Bootstrap select -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
+	<!-- zoom css -->
+    <link rel="stylesheet" href="{{ asset('css/zoom.css') }}">
+	
 	<!-- main css -->
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
@@ -56,8 +59,11 @@
 	<script src="{{ asset('js/theme.js') }}"></script>
 	<script src="{{ asset('js/cart.js') }}"></script>
 	<script src="{{ asset('js/transaksi.js') }}"></script>
+	<script src="{{ asset('js/zoom.js') }} "></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
+    <script src='https://unpkg.com/xzoom/dist/xzoom.min.js'></script>
+    <script src='https://hammerjs.github.io/dist/hammer.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js'></script>
 
 	<!-- Latest compiled and minified JavaScript Bootstrap select -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>

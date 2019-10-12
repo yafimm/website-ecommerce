@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web','admin']], function(){
     Route::get('ticket', 'KonfirmasiController@index')->name('konfirmasi.index');
     Route::put('ticket/{id}', 'KonfirmasiController@update')->name('konfirmasi.update');
     Route::get('transaksi', 'TransaksiController@index')->name('transaksi.index');
-    Route::put('transaksi/{id}', 'TransaksiController@update')->name('transaksi.update');
+    Route::put('transaksi/{id}', 'TransaksiController@update_status')->name('transaksi.update');
     Route::resource('kategori', 'KategoriController');
     Route::resource('produk', 'ProdukController');
 });

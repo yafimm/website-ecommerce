@@ -1,6 +1,3 @@
-var size;
-
-
 function totalCountCart(){
     $.ajaxSetup({
         headers: {
@@ -87,8 +84,9 @@ function totalAll(){
           totalCountCart();
         },
         error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-             console.log(JSON.stringify(jqXHR));
-             console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            Swal.fire("Product is out of stock");
+            //  console.log(JSON.stringify(jqXHR));
+            //  console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
          }
       });
 

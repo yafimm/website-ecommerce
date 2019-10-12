@@ -29,7 +29,7 @@
                             </a>
                         </li>
                         <li class="">
-                            <a class="js-arrow" href="{{ route('kategori.indexx') }}">
+                            <a class="js-arrow" href="{{ route('kategori.index') }}">
                                 <i class="fab fa-product-hunt"></i>Category
                             </a>
                         </li>

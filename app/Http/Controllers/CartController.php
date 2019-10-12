@@ -22,7 +22,7 @@ class CartController extends Controller
     public function add(Request $request)
     {
        $produk = Produk::find($request->id);
-       if($produk && $produk->stok > 0 && $produk->stok > $request->jumlah){
+       if($produk && $produk->stok > 0 && $produk->stok >= $request->jumlah){
          Cart::add([
                 'id' => $produk->id,
                 'name' => $produk->nama,
